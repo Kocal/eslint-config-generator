@@ -1,12 +1,14 @@
-import { Linter } from 'eslint';
+type ESLintConfig = import('eslint').Linter.Config;
 
-export function generateConfig(): Linter.Config {
-  let config = getBaseConfig();
+export function generateConfig(): ESLintConfig {
+  const config = getBaseConfig();
+
+  applyPrettierConfig(config);
 
   return config;
 }
 
-function getBaseConfig(): Linter.Config {
+function getBaseConfig(): ESLintConfig {
   return {
     env: {
       browser: true,
@@ -22,5 +24,14 @@ function getBaseConfig(): Linter.Config {
       // Import plugin
       'import/prefer-default-export': 'off'
     }
+  };
+}
+
+function applyPrettierConfig(config: ESLintConfig): void {
+  config.extends = (config.extends || []).concat(require.resolve('eslint-config-prettier'));
+  config.plugins = (config.plugins || []).concat('prettier');
+  config.rules = {
+    ...config.rules || {},
+    'prettier/prettier': 'error'
   };
 }

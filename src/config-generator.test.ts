@@ -10,12 +10,16 @@ describe('config-generator', function () {
       parser: '@babel/eslint-parser',
       extends: [
         require.resolve('eslint-config-airbnb-base'),
+        require.resolve('eslint-config-prettier'),
       ],
+      plugins: ['prettier'],
       rules: {
         'semi': ['error', 'always'],
         'func-names': 'off',
         // Import plugin
-        'import/prefer-default-export': 'off'
+        'import/prefer-default-export': 'off',
+        // Prettier
+        'prettier/prettier': 'error'
       }
     });
   });
