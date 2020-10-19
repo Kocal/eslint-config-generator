@@ -9,14 +9,14 @@
   "author": "Hugo Alliaume <kocal@live.fr>",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rm -fr dist",
     "build": "yarn build:js && yarn build:types",
     "build:js": "rollup -c",
     "build:types": "tsc --emitDeclarationOnly",
-    "prebuild": "rm -fr dist",
-    "prepublishOnly": "yarn run test && yarn run test:ts",
     "pretest": "yarn run build",
-    "test": "jest",
-    "test:ts": "tsc  --noEmit"
+    "test": "yarn test:ts && yarn test:unit",
+    "test:ts": "tsc  --noEmit",
+    "test:unit": "jest"
   },
   "engines": {
     "node": "^10.13.0 || >=12.0.0"
