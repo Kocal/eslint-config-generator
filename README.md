@@ -5,6 +5,11 @@
 
 ESLint config generator for our internal and public projects. Allows to configure Vue, TypeScript, Prettier, ... plugins.
 
+## Features
+
+- Use [eslint-config-airbnb-base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
+- Configure Prettier with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) and [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+
 ## Installation
 
 This package is hosted on [GitHub Packages](https://github.com/features/packages), so you must tell to npm/yarn where to download it.
@@ -18,7 +23,7 @@ You can run `npm login --registry=https://npm.pkg.github.com --scope=@yproximite
 
 Then run: 
 ```bash
-$ yarn add --dev @yproximite/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0
+$ yarn add --dev @yproximite/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0 prettier@^2.0.0
 ```
 
 ## Usage
