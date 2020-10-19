@@ -18,7 +18,7 @@ You can run `npm login --registry=https://npm.pkg.github.com --scope=@yproximite
 
 Then run: 
 ```bash
-$ yarn add --dev @yproximite/eslint-config-generator eslint@^7.0.0 babel-eslint@^10.0.0
+$ yarn add --dev @yproximite/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0
 ```
 
 ## Usage
