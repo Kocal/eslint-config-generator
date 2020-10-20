@@ -7,6 +7,7 @@ describe('options', function () {
       const expectedOptions: Options = {
         knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         vue: false,
+        typescript: false,
       };
 
       expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
@@ -19,6 +20,7 @@ describe('options', function () {
       const expectedOptions: Options = {
         knownExtensions: ['.js', '.jsx', '.css'],
         vue: false,
+        typescript: false,
       };
 
       expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
@@ -34,7 +36,8 @@ describe('options', function () {
           vue: {
             version: 2,
             config: 'recommended'
-          }
+          },
+          typescript: false,
         };
 
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
@@ -51,7 +54,8 @@ describe('options', function () {
           vue: {
             version: 3,
             config: 'recommended'
-          }
+          },
+          typescript: false,
         };
 
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
@@ -68,6 +72,64 @@ describe('options', function () {
           vue: {
             version: 2,
             config: 'essential'
+          },
+          typescript: false,
+        };
+
+        expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
+      });
+    });
+
+    describe('with TypeScript support', () => {
+      test('boolean', function () {
+        const userOptions: UserOptions = {
+          typescript: true
+        };
+        const expectedOptions: Options = {
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          vue: false,
+          typescript: {
+            vueComponents: false,
+          }
+        };
+
+        expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
+      });
+
+      test('with Vue (auto)', function () {
+        const userOptions: UserOptions = {
+          vue: true,
+          typescript: true
+        };
+        const expectedOptions: Options = {
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          vue: {
+            version: 2,
+            config: 'recommended',
+          },
+          typescript: {
+            vueComponents: true,
+          }
+        };
+
+        expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
+      });
+
+      test('without Vue (disabled)', function () {
+        const userOptions: UserOptions = {
+          vue: true,
+          typescript: {
+            vueComponents: false
+          }
+        };
+        const expectedOptions: Options = {
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          vue: {
+            version: 2,
+            config: 'recommended',
+          },
+          typescript: {
+            vueComponents: false,
           }
         };
 
