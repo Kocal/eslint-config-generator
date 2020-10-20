@@ -15,15 +15,24 @@ describe('config-generator', function () {
         require.resolve('eslint-config-prettier'),
       ],
       plugins: ['prettier'],
+      settings: {
+        'import/resolver': {
+          [require.resolve('eslint-import-resolver-node')]: {},
+          [require.resolve('eslint-import-resolver-webpack')]: {}
+        },
+        'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+      },
       rules: {
         'semi': ['error', 'always'],
         'func-names': 'off',
+        'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
         // Import plugin
         'import/prefer-default-export': 'off',
+        'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
         // Prettier
         'prettier/prettier': 'error'
       }
-    }
+    };
 
     expect(generateConfig(userOptions)).toEqual(expectedConfig);
   });
@@ -46,11 +55,20 @@ describe('config-generator', function () {
           require.resolve('eslint-config-prettier/vue'),
         ],
         plugins: ['prettier'],
+        settings: {
+          'import/resolver': {
+            [require.resolve('eslint-import-resolver-node')]: {},
+            [require.resolve('eslint-import-resolver-webpack')]: {}
+          },
+          'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+        },
         rules: {
           'semi': ['error', 'always'],
           'func-names': 'off',
+          'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
+          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
           // Prettier
           'prettier/prettier': 'error',
           // Vue
@@ -60,7 +78,7 @@ describe('config-generator', function () {
           }],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
         }
-      }
+      };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
     });
@@ -84,11 +102,20 @@ describe('config-generator', function () {
           require.resolve('eslint-config-prettier/vue'),
         ],
         plugins: ['prettier'],
+        settings: {
+          'import/resolver': {
+            [require.resolve('eslint-import-resolver-node')]: {},
+            [require.resolve('eslint-import-resolver-webpack')]: {}
+          },
+          'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+        },
         rules: {
           'semi': ['error', 'always'],
           'func-names': 'off',
+          'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
+          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
           // Prettier
           'prettier/prettier': 'error',
           // Vue
@@ -98,7 +125,7 @@ describe('config-generator', function () {
           }],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
         }
-      }
+      };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
     });
@@ -122,11 +149,20 @@ describe('config-generator', function () {
           require.resolve('eslint-config-prettier/vue'),
         ],
         plugins: ['prettier'],
+        settings: {
+          'import/resolver': {
+            [require.resolve('eslint-import-resolver-node')]: {},
+            [require.resolve('eslint-import-resolver-webpack')]: {}
+          },
+          'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+        },
         rules: {
           'semi': ['error', 'always'],
           'func-names': 'off',
+          'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
+          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
           // Prettier
           'prettier/prettier': 'error',
           // Vue
@@ -136,7 +172,7 @@ describe('config-generator', function () {
           }],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
         }
-      }
+      };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
     });
