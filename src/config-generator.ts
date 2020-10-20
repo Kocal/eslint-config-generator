@@ -21,6 +21,11 @@ function getBaseConfig(options: Options): ESLintConfig {
       es2021: true,
     },
     parser: '@babel/eslint-parser',
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      }
+    },
     extends: [
       require.resolve('eslint-config-airbnb-base'),
     ],

@@ -10,6 +10,11 @@ describe('config-generator', function () {
         es2021: true,
       },
       parser: '@babel/eslint-parser',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        }
+      },
       extends: [
         require.resolve('eslint-config-airbnb-base'),
         require.resolve('eslint-config-prettier'),
@@ -48,6 +53,11 @@ describe('config-generator', function () {
           es2021: true,
         },
         parser: 'vue-eslint-parser',
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          }
+        },
         extends: [
           require.resolve('eslint-plugin-vue/lib/configs/recommended'),
           require.resolve('eslint-config-airbnb-base'),
@@ -95,6 +105,11 @@ describe('config-generator', function () {
           es2021: true,
         },
         parser: 'vue-eslint-parser',
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          }
+        },
         extends: [
           require.resolve('eslint-plugin-vue/lib/configs/vue3-recommended'),
           require.resolve('eslint-config-airbnb-base'),
@@ -142,6 +157,11 @@ describe('config-generator', function () {
           es2021: true,
         },
         parser: 'vue-eslint-parser',
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          }
+        },
         extends: [
           require.resolve('eslint-plugin-vue/lib/configs/essential'),
           require.resolve('eslint-config-airbnb-base'),
