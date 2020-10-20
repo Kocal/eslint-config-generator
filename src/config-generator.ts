@@ -6,7 +6,7 @@ export type ESLintConfig = import('eslint').Linter.Config & {
 
 export function generateConfig(userOptions: UserOptions = {}): ESLintConfig {
   const options = normalizeUserOptions(userOptions);
-  const config = getBaseConfig();
+  const config = getBaseConfig(options);
 
   applyPrettierConfig(config, options);
   applyVueConfig(config, options);
@@ -14,7 +14,7 @@ export function generateConfig(userOptions: UserOptions = {}): ESLintConfig {
   return config;
 }
 
-function getBaseConfig(): ESLintConfig {
+function getBaseConfig(options: Options): ESLintConfig {
   return {
     env: {
       browser: true,
@@ -24,11 +24,30 @@ function getBaseConfig(): ESLintConfig {
     extends: [
       require.resolve('eslint-config-airbnb-base'),
     ],
+    settings: {
+      'import/resolver': {
+        [require.resolve('eslint-import-resolver-node')]: {},
+        [require.resolve('eslint-import-resolver-webpack')]: {}
+      },
+      'import/extensions': options.knownExtensions,
+    },
     rules: {
       'semi': ['error', 'always'],
       'func-names': 'off',
+      'no-param-reassign': ['error', {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'state', // for vuex state
+          'acc', // for reduce accumulators
+          'e', // for e.returnvalue
+        ],
+      }],
       // Import plugin
-      'import/prefer-default-export': 'off'
+      'import/prefer-default-export': 'off',
+      'import/extensions': ['error', 'always', options.knownExtensions.reduce((acc, knownExtension) => {
+        acc[knownExtension.replace(/^./, '')] = 'never';
+        return acc;
+      }, {} as { [k: string]: 'never' })],
     }
   };
 }
@@ -46,7 +65,7 @@ function applyPrettierConfig(config: ESLintConfig, options: Options): void {
 }
 
 function applyVueConfig(config: ESLintConfig, options: Options): void {
-  if(options.vue === false) {
+  if (options.vue === false) {
     return;
   }
 
