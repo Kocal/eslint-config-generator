@@ -33,10 +33,27 @@ In your `.eslintrc.js`:
 ```js
 const { generateConfig } = require('@yproximite/eslint-config-generator');
 
-module.exports = generateConfig([
-  'vue', 
-  'typescript',
-]);
+module.exports = generateConfig({
+  vue: true, 
+  typescript: true,
+});
+```
+
+### Vue 
+
+```js
+// enable Vue support
+generateConfig({
+  vue: true
+});
+
+// enable and configure Vue support
+generateConfig({
+  vue: {
+    version: 3, // default: 2
+    config: 'recommended', // default: 'recommended', available values: 'essential', 'recommended', 'strongly-recommended'
+  }
+});
 ```
 
 ---
