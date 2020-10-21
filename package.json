@@ -16,7 +16,8 @@
     "pretest": "yarn run build",
     "test": "yarn test:ts && yarn test:unit",
     "test:ts": "tsc  --noEmit",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "lint": "eslint . --ext .js,.ts"
   },
   "engines": {
     "node": "^10.13.0 || ^12.13.0 || >=14.0.0"
