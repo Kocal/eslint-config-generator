@@ -29,13 +29,13 @@ describe('options', function () {
     describe('with Vue support', () => {
       test('boolean', function () {
         const userOptions: UserOptions = {
-          vue: true
+          vue: true,
         };
         const expectedOptions: Options = {
           knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
           vue: {
             version: 2,
-            config: 'recommended'
+            config: 'recommended',
           },
           typescript: false,
         };
@@ -46,14 +46,14 @@ describe('options', function () {
       test('custom version', function () {
         const userOptions: UserOptions = {
           vue: {
-            version: 3
-          }
+            version: 3,
+          },
         };
         const expectedOptions: Options = {
           knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
           vue: {
             version: 3,
-            config: 'recommended'
+            config: 'recommended',
           },
           typescript: false,
         };
@@ -64,14 +64,14 @@ describe('options', function () {
       test('custom config', function () {
         const userOptions: UserOptions = {
           vue: {
-            config: 'essential'
-          }
+            config: 'essential',
+          },
         };
         const expectedOptions: Options = {
           knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
           vue: {
             version: 2,
-            config: 'essential'
+            config: 'essential',
           },
           typescript: false,
         };
@@ -83,14 +83,14 @@ describe('options', function () {
     describe('with TypeScript support', () => {
       test('boolean', function () {
         const userOptions: UserOptions = {
-          typescript: true
+          typescript: true,
         };
         const expectedOptions: Options = {
           knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
           vue: false,
           typescript: {
             vueComponents: false,
-          }
+          },
         };
 
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
@@ -99,7 +99,7 @@ describe('options', function () {
       test('with Vue (auto)', function () {
         const userOptions: UserOptions = {
           vue: true,
-          typescript: true
+          typescript: true,
         };
         const expectedOptions: Options = {
           knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
@@ -109,7 +109,7 @@ describe('options', function () {
           },
           typescript: {
             vueComponents: true,
-          }
+          },
         };
 
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
@@ -119,8 +119,8 @@ describe('options', function () {
         const userOptions: UserOptions = {
           vue: true,
           typescript: {
-            vueComponents: false
-          }
+            vueComponents: false,
+          },
         };
         const expectedOptions: Options = {
           knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
@@ -130,7 +130,7 @@ describe('options', function () {
           },
           typescript: {
             vueComponents: false,
-          }
+          },
         };
 
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
