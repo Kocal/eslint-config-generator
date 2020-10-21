@@ -17,6 +17,7 @@
     "test": "yarn test:ts && yarn test:unit",
     "test:ts": "tsc  --noEmit",
     "test:unit": "jest",
+    "prelint": "yarn run build",
     "lint": "eslint . --ext .js,.ts"
   },
   "engines": {
