@@ -56,6 +56,22 @@ generateConfig({
 });
 ```
 
+### TypeScript
+
+```js
+// enable TypeScript support
+generateConfig({
+  typescript: true
+});
+
+// enable and configure TypeScript support
+generateConfig({
+  typescript: {
+    vueComponents: true, // allow to lint .vue files, enabled by default if Vue support is enabled 
+  }
+});
+```
+
 ---
 
 ## How to contribute

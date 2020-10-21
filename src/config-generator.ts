@@ -1,15 +1,18 @@
+import { Linter } from 'eslint';
 import { normalizeUserOptions, Options, UserOptions } from './options';
 
-export type ESLintConfig = import('eslint').Linter.Config & {
-  extends?: string[]
+export type ESLintConfig = Linter.Config & {
+  extends?: string[],
+  parserOptions: Linter.ParserOptions;
 };
 
 export function generateConfig(userOptions: UserOptions = {}): ESLintConfig {
   const options = normalizeUserOptions(userOptions);
   const config = getBaseConfig(options);
 
-  applyPrettierConfig(config, options);
   applyVueConfig(config, options);
+  applyTypeScriptConfig(config, options);
+  applyPrettierConfig(config, options);
 
   return config;
 }
@@ -21,6 +24,11 @@ function getBaseConfig(options: Options): ESLintConfig {
       es2021: true,
     },
     parser: '@babel/eslint-parser',
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      }
+    },
     extends: [
       require.resolve('eslint-config-airbnb-base'),
     ],
@@ -57,6 +65,9 @@ function applyPrettierConfig(config: ESLintConfig, options: Options): void {
   if (options.vue) {
     config.extends.push(require.resolve('eslint-config-prettier/vue'));
   }
+  if (options.typescript) {
+    config.extends.push(require.resolve('eslint-config-prettier/@typescript-eslint'));
+  }
   config.plugins = (config.plugins || []).concat('prettier');
   config.rules = {
     ...config.rules || {},
@@ -81,4 +92,53 @@ function applyVueConfig(config: ESLintConfig, options: Options): void {
     }],
     'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
   };
+}
+
+function applyTypeScriptConfig(config: ESLintConfig, options: Options): void {
+  if (options.typescript === false) {
+    return;
+  }
+
+  config.extends?.push(require.resolve('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended'));
+  config.extends?.push(require.resolve('@typescript-eslint/eslint-plugin/dist/configs/recommended'));
+
+  if (options.vue) {
+    config.parserOptions.parser = '@typescript-eslint/parser';
+  } else {
+    config.parser = '@typescript-eslint/parser';
+  }
+
+  if (options.typescript.vueComponents) {
+    config.parserOptions.extraFileExtensions = ['.vue'];
+  }
+
+  config.rules = {
+    ...config.rules,
+    '@typescript-eslint/naming-convention': [
+      'error',
+      { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+      { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+      { selector: 'typeLike', format: ['PascalCase'] },
+      { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] }
+    ]
+  };
+
+  config.overrides = (config.overrides || []).concat(
+    {
+      files: ['*.js', '*.jsx'].concat(options.typescript.vueComponents ? [] : ['*.vue']),
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      }
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
+        // does not work with type definitions
+        'no-unused-vars': 'off',
+        'camelcase': 'off'
+      },
+    },
+  );
 }
