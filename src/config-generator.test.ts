@@ -13,30 +13,31 @@ describe('config-generator', function () {
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
-        }
+        },
       },
-      extends: [
-        require.resolve('eslint-config-airbnb-base'),
-        require.resolve('eslint-config-prettier'),
-      ],
+      extends: ['airbnb-base', 'prettier'],
       plugins: ['prettier'],
       settings: {
         'import/resolver': {
-          [require.resolve('eslint-import-resolver-node')]: {},
-          [require.resolve('eslint-import-resolver-webpack')]: {}
+          node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+          webpack: {},
         },
         'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
       },
       rules: {
-        'semi': ['error', 'always'],
+        semi: ['error', 'always'],
         'func-names': 'off',
         'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
         // Import plugin
         'import/prefer-default-export': 'off',
-        'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+        'import/extensions': [
+          'error',
+          'always',
+          { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+        ],
         // Prettier
-        'prettier/prettier': 'error'
-      }
+        'prettier/prettier': 'error',
+      },
     };
 
     expect(generateConfig(userOptions)).toEqual(expectedConfig);
@@ -45,7 +46,7 @@ describe('config-generator', function () {
   describe('Vue', () => {
     test('Basic support', function () {
       const userOptions: UserOptions = {
-        vue: true
+        vue: true,
       };
       const expectedConfig: ESLintConfig = {
         env: {
@@ -56,38 +57,41 @@ describe('config-generator', function () {
         parserOptions: {
           ecmaFeatures: {
             jsx: true,
-          }
+          },
         },
-        extends: [
-          require.resolve('eslint-plugin-vue/lib/configs/recommended'),
-          require.resolve('eslint-config-airbnb-base'),
-          require.resolve('eslint-config-prettier'),
-          require.resolve('eslint-config-prettier/vue'),
-        ],
+        extends: ['plugin:vue/recommended', 'airbnb-base', 'prettier', 'prettier/vue'],
         plugins: ['prettier'],
         settings: {
           'import/resolver': {
-            [require.resolve('eslint-import-resolver-node')]: {},
-            [require.resolve('eslint-import-resolver-webpack')]: {}
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+            webpack: {},
           },
           'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         },
         rules: {
-          'semi': ['error', 'always'],
+          semi: ['error', 'always'],
           'func-names': 'off',
           'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
-          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+          'import/extensions': [
+            'error',
+            'always',
+            { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          ],
           // Prettier
           'prettier/prettier': 'error',
           // Vue
-          'vue/component-name-in-template-casing': [`error`, `PascalCase`, {
-            'registeredComponentsOnly': false,
-            'ignores': [],
-          }],
+          'vue/component-name-in-template-casing': [
+            `error`,
+            `PascalCase`,
+            {
+              registeredComponentsOnly: false,
+              ignores: [],
+            },
+          ],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
-        }
+        },
       };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
@@ -96,8 +100,8 @@ describe('config-generator', function () {
     test('Different version', function () {
       const userOptions: UserOptions = {
         vue: {
-          version: 3
-        }
+          version: 3,
+        },
       };
       const expectedConfig: ESLintConfig = {
         env: {
@@ -108,38 +112,41 @@ describe('config-generator', function () {
         parserOptions: {
           ecmaFeatures: {
             jsx: true,
-          }
+          },
         },
-        extends: [
-          require.resolve('eslint-plugin-vue/lib/configs/vue3-recommended'),
-          require.resolve('eslint-config-airbnb-base'),
-          require.resolve('eslint-config-prettier'),
-          require.resolve('eslint-config-prettier/vue'),
-        ],
+        extends: ['plugin:vue/vue3-recommended', 'airbnb-base', 'prettier', 'prettier/vue'],
         plugins: ['prettier'],
         settings: {
           'import/resolver': {
-            [require.resolve('eslint-import-resolver-node')]: {},
-            [require.resolve('eslint-import-resolver-webpack')]: {}
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+            webpack: {},
           },
           'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         },
         rules: {
-          'semi': ['error', 'always'],
+          semi: ['error', 'always'],
           'func-names': 'off',
           'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
-          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+          'import/extensions': [
+            'error',
+            'always',
+            { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          ],
           // Prettier
           'prettier/prettier': 'error',
           // Vue
-          'vue/component-name-in-template-casing': [`error`, `PascalCase`, {
-            'registeredComponentsOnly': false,
-            'ignores': [],
-          }],
+          'vue/component-name-in-template-casing': [
+            `error`,
+            `PascalCase`,
+            {
+              registeredComponentsOnly: false,
+              ignores: [],
+            },
+          ],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
-        }
+        },
       };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
@@ -148,8 +155,8 @@ describe('config-generator', function () {
     test('Different config', function () {
       const userOptions: UserOptions = {
         vue: {
-          config: 'essential'
-        }
+          config: 'essential',
+        },
       };
       const expectedConfig: ESLintConfig = {
         env: {
@@ -160,38 +167,41 @@ describe('config-generator', function () {
         parserOptions: {
           ecmaFeatures: {
             jsx: true,
-          }
+          },
         },
-        extends: [
-          require.resolve('eslint-plugin-vue/lib/configs/essential'),
-          require.resolve('eslint-config-airbnb-base'),
-          require.resolve('eslint-config-prettier'),
-          require.resolve('eslint-config-prettier/vue'),
-        ],
+        extends: ['plugin:vue/essential', 'airbnb-base', 'prettier', 'prettier/vue'],
         plugins: ['prettier'],
         settings: {
           'import/resolver': {
-            [require.resolve('eslint-import-resolver-node')]: {},
-            [require.resolve('eslint-import-resolver-webpack')]: {}
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+            webpack: {},
           },
           'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         },
         rules: {
-          'semi': ['error', 'always'],
+          semi: ['error', 'always'],
           'func-names': 'off',
           'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
-          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+          'import/extensions': [
+            'error',
+            'always',
+            { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          ],
           // Prettier
           'prettier/prettier': 'error',
           // Vue
-          'vue/component-name-in-template-casing': [`error`, `PascalCase`, {
-            'registeredComponentsOnly': false,
-            'ignores': [],
-          }],
+          'vue/component-name-in-template-casing': [
+            `error`,
+            `PascalCase`,
+            {
+              registeredComponentsOnly: false,
+              ignores: [],
+            },
+          ],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
-        }
+        },
       };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
@@ -201,7 +211,7 @@ describe('config-generator', function () {
   describe('TypeScript', function () {
     test('Basic support', function () {
       const userOptions: UserOptions = {
-        typescript: true
+        typescript: true,
       };
       const expectedConfig: ESLintConfig = {
         env: {
@@ -212,40 +222,49 @@ describe('config-generator', function () {
         parserOptions: {
           ecmaFeatures: {
             jsx: true,
-          }
+          },
         },
         extends: [
-          require.resolve('eslint-config-airbnb-base'),
-          require.resolve('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended'),
-          require.resolve('@typescript-eslint/eslint-plugin/dist/configs/recommended'),
-          require.resolve('eslint-config-prettier'),
-          require.resolve('eslint-config-prettier/@typescript-eslint'),
+          'airbnb-base',
+          'plugin:@typescript-eslint/eslint-recommended',
+          'plugin:@typescript-eslint/recommended',
+          'prettier',
+          'prettier/@typescript-eslint',
         ],
         plugins: ['prettier'],
         settings: {
           'import/resolver': {
-            [require.resolve('eslint-import-resolver-node')]: {},
-            [require.resolve('eslint-import-resolver-webpack')]: {}
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+            webpack: {},
           },
           'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         },
         rules: {
-          'semi': ['error', 'always'],
+          semi: ['error', 'always'],
           'func-names': 'off',
           'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
-          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+          'import/extensions': [
+            'error',
+            'always',
+            { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          ],
           // TypeScript
           '@typescript-eslint/naming-convention': [
             'error',
             { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
-            { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+            {
+              selector: 'variable',
+              format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+              leadingUnderscore: 'allow',
+              trailingUnderscore: 'allow',
+            },
             { selector: 'typeLike', format: ['PascalCase'] },
-            { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] }
+            { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] },
           ],
           // Prettier
-          'prettier/prettier': 'error'
+          'prettier/prettier': 'error',
         },
         overrides: [
           {
@@ -253,7 +272,7 @@ describe('config-generator', function () {
             rules: {
               '@typescript-eslint/explicit-function-return-type': 'off',
               '@typescript-eslint/explicit-module-boundary-types': 'off',
-            }
+            },
           },
           {
             files: ['*.ts', '*.tsx'],
@@ -261,10 +280,10 @@ describe('config-generator', function () {
               // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
               // does not work with type definitions
               'no-unused-vars': 'off',
-              'camelcase': 'off'
+              camelcase: 'off',
             },
-          }
-        ]
+          },
+        ],
       };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
@@ -286,56 +305,69 @@ describe('config-generator', function () {
           ecmaFeatures: {
             jsx: true,
           },
-          extraFileExtensions: ['.vue']
+          extraFileExtensions: ['.vue'],
         },
         extends: [
-          require.resolve('eslint-plugin-vue/lib/configs/recommended'),
-          require.resolve('eslint-config-airbnb-base'),
-          require.resolve('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended'),
-          require.resolve('@typescript-eslint/eslint-plugin/dist/configs/recommended'),
-          require.resolve('eslint-config-prettier'),
-          require.resolve('eslint-config-prettier/vue'),
-          require.resolve('eslint-config-prettier/@typescript-eslint'),
+          'plugin:vue/recommended',
+          'airbnb-base',
+          'plugin:@typescript-eslint/eslint-recommended',
+          'plugin:@typescript-eslint/recommended',
+          'prettier',
+          'prettier/vue',
+          'prettier/@typescript-eslint',
         ],
         plugins: ['prettier'],
         settings: {
           'import/resolver': {
-            [require.resolve('eslint-import-resolver-node')]: {},
-            [require.resolve('eslint-import-resolver-webpack')]: {}
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+            webpack: {},
           },
           'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         },
         rules: {
-          'semi': ['error', 'always'],
+          semi: ['error', 'always'],
           'func-names': 'off',
           'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
-          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+          'import/extensions': [
+            'error',
+            'always',
+            { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          ],
           // TypeScript
           '@typescript-eslint/naming-convention': [
             'error',
             { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
-            { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+            {
+              selector: 'variable',
+              format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+              leadingUnderscore: 'allow',
+              trailingUnderscore: 'allow',
+            },
             { selector: 'typeLike', format: ['PascalCase'] },
-            { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] }
+            { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] },
           ],
           // Vue
-          'vue/component-name-in-template-casing': [`error`, `PascalCase`, {
-            'registeredComponentsOnly': false,
-            'ignores': [],
-          }],
+          'vue/component-name-in-template-casing': [
+            `error`,
+            `PascalCase`,
+            {
+              registeredComponentsOnly: false,
+              ignores: [],
+            },
+          ],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
           // Prettier
-          'prettier/prettier': 'error'
+          'prettier/prettier': 'error',
         },
         overrides: [
           {
-            files: ['*.js', '*.jsx'/*, '*.vue' */],
+            files: ['*.js', '*.jsx' /* , '*.vue' */],
             rules: {
               '@typescript-eslint/explicit-function-return-type': 'off',
               '@typescript-eslint/explicit-module-boundary-types': 'off',
-            }
+            },
           },
           {
             files: ['*.ts', '*.tsx'],
@@ -343,10 +375,10 @@ describe('config-generator', function () {
               // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
               // does not work with type definitions
               'no-unused-vars': 'off',
-              'camelcase': 'off'
+              camelcase: 'off',
             },
-          }
-        ]
+          },
+        ],
       };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
@@ -372,45 +404,58 @@ describe('config-generator', function () {
           },
         },
         extends: [
-          require.resolve('eslint-plugin-vue/lib/configs/recommended'),
-          require.resolve('eslint-config-airbnb-base'),
-          require.resolve('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended'),
-          require.resolve('@typescript-eslint/eslint-plugin/dist/configs/recommended'),
-          require.resolve('eslint-config-prettier'),
-          require.resolve('eslint-config-prettier/vue'),
-          require.resolve('eslint-config-prettier/@typescript-eslint'),
+          'plugin:vue/recommended',
+          'airbnb-base',
+          'plugin:@typescript-eslint/eslint-recommended',
+          'plugin:@typescript-eslint/recommended',
+          'prettier',
+          'prettier/vue',
+          'prettier/@typescript-eslint',
         ],
         plugins: ['prettier'],
         settings: {
           'import/resolver': {
-            [require.resolve('eslint-import-resolver-node')]: {},
-            [require.resolve('eslint-import-resolver-webpack')]: {}
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+            webpack: {},
           },
           'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
         },
         rules: {
-          'semi': ['error', 'always'],
+          semi: ['error', 'always'],
           'func-names': 'off',
           'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'acc', 'e'] }],
           // Import plugin
           'import/prefer-default-export': 'off',
-          'import/extensions': ['error', 'always', { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' }],
+          'import/extensions': [
+            'error',
+            'always',
+            { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          ],
           // TypeScript
           '@typescript-eslint/naming-convention': [
             'error',
             { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
-            { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+            {
+              selector: 'variable',
+              format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+              leadingUnderscore: 'allow',
+              trailingUnderscore: 'allow',
+            },
             { selector: 'typeLike', format: ['PascalCase'] },
-            { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] }
+            { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] },
           ],
           // Vue
-          'vue/component-name-in-template-casing': [`error`, `PascalCase`, {
-            'registeredComponentsOnly': false,
-            'ignores': [],
-          }],
+          'vue/component-name-in-template-casing': [
+            `error`,
+            `PascalCase`,
+            {
+              registeredComponentsOnly: false,
+              ignores: [],
+            },
+          ],
           'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
           // Prettier
-          'prettier/prettier': 'error'
+          'prettier/prettier': 'error',
         },
         overrides: [
           {
@@ -418,7 +463,7 @@ describe('config-generator', function () {
             rules: {
               '@typescript-eslint/explicit-function-return-type': 'off',
               '@typescript-eslint/explicit-module-boundary-types': 'off',
-            }
+            },
           },
           {
             files: ['*.ts', '*.tsx'],
@@ -426,10 +471,10 @@ describe('config-generator', function () {
               // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
               // does not work with type definitions
               'no-unused-vars': 'off',
-              'camelcase': 'off'
+              camelcase: 'off',
             },
-          }
-        ]
+          },
+        ],
       };
 
       expect(generateConfig(userOptions)).toEqual(expectedConfig);
