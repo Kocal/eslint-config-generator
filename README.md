@@ -8,7 +8,9 @@ ESLint config generator for our internal and public projects. Allows to configur
 ## Features
 
 - Use [eslint-config-airbnb-base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
-- Configure Prettier with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) and [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- Use Prettier with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) and [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- Support Vue, with [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) with some opinionated rules
+- Support TypeScript, with [@typescript-eslint/plugin-eslint](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/) with some opinionated rules
 
 ## Installation
 
