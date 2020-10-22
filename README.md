@@ -3,7 +3,13 @@
 ![Test](https://github.com/Yproximite/eslint-config-generator/workflows/Test/badge.svg)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/yproximite/eslint-config-generator)
 
-ESLint config generator for our internal and public projects. Allows to configure Vue, TypeScript, Prettier, ... plugins.
+An ESLint config generator for our internal and public projects, with Prettier, Vue, and TypeScript support.
+
+## Why?
+
+The primary goal of this configuration generator is to have the same and adaptable_ configuration on _all_ of our projects.
+
+In this way, we reduce time and energy costs while maintaining +150 lines of ESLint configuration (for the biggest) accross multiple projects. 
 
 ## Features
 
