@@ -7,7 +7,7 @@ An ESLint config generator for our internal and public projects, with Prettier, 
 
 ## Why?
 
-The primary goal of this configuration generator is to have the same and adaptable_ configuration on _all_ of our projects.
+The primary goal of this configuration generator is to have the same and _adaptable_ configuration on _all_ of our projects.
 
 In this way, we reduce time and energy costs while maintaining +150 lines of ESLint configuration (for the biggest) accross multiple projects. 
 
