@@ -8,6 +8,7 @@ export type ESLintConfig = Linter.Config & {
 
 function getBaseConfig(options: Options): ESLintConfig {
   return {
+    root: options.root,
     env: {
       browser: true,
       es2021: true,

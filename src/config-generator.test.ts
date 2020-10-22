@@ -5,6 +5,7 @@ describe('config-generator', function () {
   test('base configuration', function () {
     const userOptions: UserOptions = {};
     const expectedConfig: ESLintConfig = {
+      root: true,
       env: {
         browser: true,
         es2021: true,
@@ -49,6 +50,7 @@ describe('config-generator', function () {
         vue: true,
       };
       const expectedConfig: ESLintConfig = {
+        root: true,
         env: {
           browser: true,
           es2021: true,
@@ -104,6 +106,7 @@ describe('config-generator', function () {
         },
       };
       const expectedConfig: ESLintConfig = {
+        root: true,
         env: {
           browser: true,
           es2021: true,
@@ -159,6 +162,7 @@ describe('config-generator', function () {
         },
       };
       const expectedConfig: ESLintConfig = {
+        root: true,
         env: {
           browser: true,
           es2021: true,
@@ -214,6 +218,7 @@ describe('config-generator', function () {
         typescript: true,
       };
       const expectedConfig: ESLintConfig = {
+        root: true,
         env: {
           browser: true,
           es2021: true,
@@ -295,6 +300,7 @@ describe('config-generator', function () {
         vue: true,
       };
       const expectedConfig: ESLintConfig = {
+        root: true,
         env: {
           browser: true,
           es2021: true,
@@ -392,6 +398,7 @@ describe('config-generator', function () {
         vue: true,
       };
       const expectedConfig: ESLintConfig = {
+        root: true,
         env: {
           browser: true,
           es2021: true,
