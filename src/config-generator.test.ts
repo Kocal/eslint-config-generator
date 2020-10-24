@@ -59,7 +59,6 @@ describe('Configuration generator', function () {
           `PascalCase`,
           {
             registeredComponentsOnly: false,
-            ignores: [],
           },
         ],
         'vue/html-self-closing': ['error'],

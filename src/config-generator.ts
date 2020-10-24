@@ -94,7 +94,6 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
       `PascalCase`,
       {
         registeredComponentsOnly: false,
-        ignores: [],
       },
     ],
     'vue/html-self-closing': ['error'],
