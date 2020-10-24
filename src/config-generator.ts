@@ -97,7 +97,7 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
         ignores: [],
       },
     ],
-    'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
+    'vue/html-self-closing': ['error'],
   };
 
   return config;

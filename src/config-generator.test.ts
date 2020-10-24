@@ -92,7 +92,7 @@ describe('config-generator', function () {
               ignores: [],
             },
           ],
-          'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
+          'vue/html-self-closing': ['error'],
         },
       };
 
@@ -148,7 +148,7 @@ describe('config-generator', function () {
               ignores: [],
             },
           ],
-          'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
+          'vue/html-self-closing': ['error'],
         },
       };
 
@@ -204,7 +204,7 @@ describe('config-generator', function () {
               ignores: [],
             },
           ],
-          'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
+          'vue/html-self-closing': ['error'],
         },
       };
 
@@ -363,7 +363,7 @@ describe('config-generator', function () {
               ignores: [],
             },
           ],
-          'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
+          'vue/html-self-closing': ['error'],
           // Prettier
           'prettier/prettier': 'error',
         },
@@ -460,7 +460,7 @@ describe('config-generator', function () {
               ignores: [],
             },
           ],
-          'vue/html-self-closing': ['error', { html: { normal: 'never', void: 'always' } }],
+          'vue/html-self-closing': ['error'],
           // Prettier
           'prettier/prettier': 'error',
         },
