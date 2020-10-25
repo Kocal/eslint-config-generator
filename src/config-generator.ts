@@ -97,6 +97,7 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
       },
     ],
     'vue/html-self-closing': ['error'],
+    'vue/no-bare-strings-in-template': ['error'],
   };
 
   return config;

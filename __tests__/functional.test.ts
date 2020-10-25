@@ -65,6 +65,12 @@ describe('Functional', function () {
     expect(results[0].messages).toMatchInlineSnapshot(`
         Array [
           Object {
+            "column": 8,
+            "line": 2,
+            "message": "Unexpected non-translated string used.",
+            "ruleId": "vue/no-bare-strings-in-template",
+          },
+          Object {
             "column": 5,
             "line": 4,
             "message": "Component name \\"transition\\" is not PascalCase.",
@@ -73,36 +79,42 @@ describe('Functional', function () {
           Object {
             "column": 29,
             "line": 5,
-            "message": "Replace \`⏎········my·image:·<img·src=\\"https://example.com/image.png\\"·/>⏎······\` with \`my·image:·<img·src=\\"https://example.com/image.png\\"·/>\`",
-            "ruleId": "prettier/prettier",
+            "message": "Unexpected non-translated string used.",
+            "ruleId": "vue/no-bare-strings-in-template",
           },
           Object {
-            "column": 19,
-            "line": 6,
+            "column": 9,
+            "line": 7,
             "message": "Disallow self-closing on HTML void elements (<img/>).",
             "ruleId": "vue/html-self-closing",
           },
           Object {
-            "column": 28,
-            "line": 13,
+            "column": 29,
+            "line": 14,
             "message": "Delete \`·\`",
             "ruleId": "prettier/prettier",
           },
           Object {
             "column": 5,
-            "line": 18,
+            "line": 19,
             "message": "Component name \\"v-component\\" is not PascalCase.",
             "ruleId": "vue/component-name-in-template-casing",
           },
           Object {
+            "column": 18,
+            "line": 19,
+            "message": "Unexpected non-translated string used.",
+            "ruleId": "vue/no-bare-strings-in-template",
+          },
+          Object {
             "column": 5,
-            "line": 30,
+            "line": 31,
             "message": "Unexpected console statement.",
             "ruleId": "no-console",
           },
           Object {
             "column": 17,
-            "line": 30,
+            "line": 31,
             "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
             "ruleId": "prettier/prettier",
           },
@@ -125,6 +137,12 @@ describe('Functional', function () {
     expect(results[0].messages).toMatchInlineSnapshot(`
         Array [
           Object {
+            "column": 8,
+            "line": 2,
+            "message": "Unexpected non-translated string used.",
+            "ruleId": "vue/no-bare-strings-in-template",
+          },
+          Object {
             "column": 5,
             "line": 4,
             "message": "Component name \\"transition\\" is not PascalCase.",
@@ -135,6 +153,12 @@ describe('Functional', function () {
             "line": 5,
             "message": "Replace \`⏎········my·image:·<img·src=\\"https://example.com/image.png\\"·/>⏎······\` with \`my·image:·<img·src=\\"https://example.com/image.png\\"·/>\`",
             "ruleId": "prettier/prettier",
+          },
+          Object {
+            "column": 29,
+            "line": 5,
+            "message": "Unexpected non-translated string used.",
+            "ruleId": "vue/no-bare-strings-in-template",
           },
           Object {
             "column": 19,
@@ -153,6 +177,12 @@ describe('Functional', function () {
             "line": 18,
             "message": "Component name \\"v-component\\" is not PascalCase.",
             "ruleId": "vue/component-name-in-template-casing",
+          },
+          Object {
+            "column": 18,
+            "line": 18,
+            "message": "Unexpected non-translated string used.",
+            "ruleId": "vue/no-bare-strings-in-template",
           },
           Object {
             "column": 3,
