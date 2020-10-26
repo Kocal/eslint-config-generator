@@ -2,6 +2,8 @@ import { ESLint } from 'eslint';
 import * as path from 'path';
 import { generateConfig } from '../dist';
 
+let eslint: ESLint;
+
 function createESLint(options: ESLint.Options): ESLint {
   return new ESLint({
     cwd: path.join(__dirname, 'fixtures'),
@@ -21,9 +23,24 @@ function cleanResults(results: ESLint.LintResult[]) {
   });
 }
 
+async function lintCode(
+  code: string,
+  options?: { filePath?: string; warnIgnored?: boolean }
+): Promise<ESLint.LintResult[]> {
+  return eslint.lintText(code, options);
+}
+
+async function lintTypeScriptCode(code: string): Promise<ESLint.LintResult[]> {
+  return lintCode(code, { filePath: 'file.ts' });
+}
+
+async function lintVueCode(code: string): Promise<ESLint.LintResult[]> {
+  return lintCode(code, { filePath: 'file.vue' });
+}
+
 describe('Functional', function () {
   it('should lint by using the default configuration', async function () {
-    const eslint = createESLint({
+    eslint = createESLint({
       baseConfig: generateConfig(),
     });
 
@@ -54,7 +71,7 @@ describe('Functional', function () {
   });
 
   it('should lint Vue code', async function () {
-    const eslint = createESLint({
+    eslint = createESLint({
       baseConfig: generateConfig({
         vue: true,
       }),
@@ -123,7 +140,7 @@ describe('Functional', function () {
   });
 
   it('should lint Vue code with TypeScript support on .vue files', async function () {
-    const eslint = createESLint({
+    eslint = createESLint({
       baseConfig: generateConfig({
         vue: true,
         typescript: {
@@ -231,60 +248,136 @@ describe('Functional', function () {
   });
 
   it('should lint TypeScript code', async function () {
-    const eslint = createESLint({
+    eslint = createESLint({
       baseConfig: generateConfig({
         typescript: true,
       }),
     });
 
-    const results = cleanResults(
-      await eslint.lintText(
-        `const str: any = 'foo'
-console.log(str)      
-`,
-        { filePath: 'file.ts' }
-      )
+    const results = await lintTypeScriptCode(
+      `const str: any = 'foo';
+console.log(str)
+`
     );
 
     expect(results[0].messages).toMatchInlineSnapshot(`
-        Array [
-          Object {
-            "column": 12,
-            "line": 1,
-            "message": "Unexpected any. Specify a different type.",
-            "ruleId": "@typescript-eslint/no-explicit-any",
+      Array [
+        Object {
+          "column": 12,
+          "endColumn": 15,
+          "endLine": 1,
+          "line": 1,
+          "message": "Unexpected any. Specify a different type.",
+          "messageId": "unexpectedAny",
+          "nodeType": "TSAnyKeyword",
+          "ruleId": "@typescript-eslint/no-explicit-any",
+          "severity": 1,
+          "suggestions": Array [
+            Object {
+              "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
+              "fix": Object {
+                "range": Array [
+                  11,
+                  14,
+                ],
+                "text": "unknown",
+              },
+              "messageId": "suggestUnknown",
+            },
+            Object {
+              "desc": "Use \`never\` instead, this is useful when instantiating generic type parameters that you don't need to know the type of.",
+              "fix": Object {
+                "range": Array [
+                  11,
+                  14,
+                ],
+                "text": "never",
+              },
+              "messageId": "suggestNever",
+            },
+          ],
+        },
+        Object {
+          "column": 1,
+          "endColumn": 12,
+          "endLine": 2,
+          "line": 2,
+          "message": "Unexpected console statement.",
+          "messageId": "unexpected",
+          "nodeType": "MemberExpression",
+          "ruleId": "no-console",
+          "severity": 1,
+        },
+        Object {
+          "column": 17,
+          "endColumn": 17,
+          "endLine": 2,
+          "fix": Object {
+            "range": Array [
+              40,
+              40,
+            ],
+            "text": ";",
           },
-          Object {
-            "column": 23,
-            "line": 1,
-            "message": "Insert \`;\`",
-            "ruleId": "prettier/prettier",
+          "line": 2,
+          "message": "Insert \`;\`",
+          "nodeType": null,
+          "ruleId": "prettier/prettier",
+          "severity": 2,
+        },
+        Object {
+          "column": 17,
+          "endColumn": 1,
+          "endLine": 3,
+          "fix": Object {
+            "range": Array [
+              40,
+              40,
+            ],
+            "text": ";",
           },
-          Object {
-            "column": 23,
-            "line": 1,
-            "message": "Missing semicolon.",
-            "ruleId": "semi",
-          },
-          Object {
-            "column": 1,
-            "line": 2,
-            "message": "Unexpected console statement.",
-            "ruleId": "no-console",
-          },
-          Object {
-            "column": 17,
-            "line": 2,
-            "message": "Replace \`······\` with \`;\`",
-            "ruleId": "prettier/prettier",
-          },
-          Object {
-            "column": 17,
-            "line": 2,
-            "message": "Missing semicolon.",
-            "ruleId": "semi",
-          },
-        ]
-      `);
+          "line": 2,
+          "message": "Missing semicolon.",
+          "messageId": "missingSemi",
+          "nodeType": "ExpressionStatement",
+          "ruleId": "semi",
+          "severity": 2,
+        },
+      ]
+    `);
+  });
+
+  describe('Rule', function () {
+    describe('vue/no-duplicate-attr-inheritance', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>
+    <MyComponent v-bind="$attrs" />
+  </div>
+</template>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "column": 26,
+              "endColumn": 32,
+              "endLine": 3,
+              "line": 3,
+              "message": "Set \\"inheritAttrs\\" to false.",
+              "nodeType": "Identifier",
+              "ruleId": "vue/no-duplicate-attr-inheritance",
+              "severity": 2,
+            },
+          ]
+        `);
+      });
+    });
   });
 });
