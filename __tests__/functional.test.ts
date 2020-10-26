@@ -378,6 +378,75 @@ console.log(str)
           ]
         `);
       });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>
+    <MyComponent v-bind="$attrs" />
+  </div>
+</template>
+
+<script>
+export default {
+  inheritAttrs: false,
+};
+</script>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
+    });
+
+    describe('vue/no-empty-component-block', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<style></style>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "column": 1,
+              "endColumn": 16,
+              "endLine": 1,
+              "line": 1,
+              "message": "\`<style>\` is empty. Empty block is not allowed.",
+              "messageId": "unexpected",
+              "nodeType": "VElement",
+              "ruleId": "vue/no-empty-component-block",
+              "severity": 2,
+            },
+          ]
+        `);
+      });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>
+    <MyComponent />
+  </div>
+</template>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
     });
   });
 });

@@ -99,6 +99,7 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
     'vue/html-self-closing': ['error'],
     'vue/no-bare-strings-in-template': ['error'],
     'vue/no-duplicate-attr-inheritance': ['error'],
+    'vue/no-empty-component-block': ['error'],
   };
 
   return config;
