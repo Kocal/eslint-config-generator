@@ -1,8 +1,8 @@
 import { normalizeUserOptions, Options, UserOptions } from '../dist';
 
-describe('options', function () {
-  describe('normalizeUserOptions', function () {
-    test('defaults', function () {
+describe('Options', function () {
+  describe('Normalize user options', function () {
+    it('should normalize user options', function () {
       const userOptions: UserOptions = {};
       const expectedOptions: Options = {
         root: true,
@@ -14,7 +14,7 @@ describe('options', function () {
       expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
     });
 
-    test('with root disabled', function () {
+    it('should normalize user options and disable "root"', function () {
       const userOptions: UserOptions = {
         root: false,
       };
@@ -28,7 +28,7 @@ describe('options', function () {
       expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
     });
 
-    test('with different known extensions', function () {
+    it('should normalize user options with configured known extensions', function () {
       const userOptions: UserOptions = {
         knownExtensions: ['.js', '.jsx', '.css'],
       };
@@ -42,8 +42,8 @@ describe('options', function () {
       expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
     });
 
-    describe('with Vue support', () => {
-      test('boolean', function () {
+    describe('Vue', () => {
+      it('should enable Vue support by using "true"', function () {
         const userOptions: UserOptions = {
           vue: true,
         };
@@ -60,7 +60,7 @@ describe('options', function () {
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
       });
 
-      test('custom version', function () {
+      it('should enable Vue support and specify version "3"', function () {
         const userOptions: UserOptions = {
           vue: {
             version: 3,
@@ -79,7 +79,7 @@ describe('options', function () {
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
       });
 
-      test('custom config', function () {
+      it('should enable Vue support and specify config "essential"', function () {
         const userOptions: UserOptions = {
           vue: {
             config: 'essential',
@@ -99,8 +99,8 @@ describe('options', function () {
       });
     });
 
-    describe('with TypeScript support', () => {
-      test('boolean', function () {
+    describe('TypeScript', () => {
+      it('should enable TypeScript support by using "true"', function () {
         const userOptions: UserOptions = {
           typescript: true,
         };
@@ -116,7 +116,7 @@ describe('options', function () {
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
       });
 
-      test('with Vue (auto)', function () {
+      it('should enable TypeScript support and TypeScript on .vue files support if Vue support is enabled', function () {
         const userOptions: UserOptions = {
           vue: true,
           typescript: true,
@@ -136,7 +136,7 @@ describe('options', function () {
         expect(normalizeUserOptions(userOptions)).toEqual(expectedOptions);
       });
 
-      test('without Vue (disabled)', function () {
+      it('should enable TypeScript support but disable TypeScript on .vue files', function () {
         const userOptions: UserOptions = {
           vue: true,
           typescript: {

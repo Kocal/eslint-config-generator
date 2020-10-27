@@ -21,8 +21,8 @@ function cleanResults(results: ESLint.LintResult[]) {
   });
 }
 
-describe('functional', function () {
-  test('basic lint', async function () {
+describe('Functional', function () {
+  it('should lint by using the default configuration', async function () {
     const eslint = createESLint({
       baseConfig: generateConfig(),
     });
@@ -53,17 +53,16 @@ describe('functional', function () {
     `);
   });
 
-  describe('Vue', function () {
-    test('basic lint', async function () {
-      const eslint = createESLint({
-        baseConfig: generateConfig({
-          vue: true,
-        }),
-      });
+  it('should lint Vue code', async function () {
+    const eslint = createESLint({
+      baseConfig: generateConfig({
+        vue: true,
+      }),
+    });
 
-      const results = cleanResults(await eslint.lintFiles('component.vue'));
+    const results = cleanResults(await eslint.lintFiles('component.vue'));
 
-      expect(results[0].messages).toMatchInlineSnapshot(`
+    expect(results[0].messages).toMatchInlineSnapshot(`
         Array [
           Object {
             "column": 5,
@@ -109,21 +108,21 @@ describe('functional', function () {
           },
         ]
       `);
+  });
+
+  it('should lint Vue code with TypeScript support on .vue files', async function () {
+    const eslint = createESLint({
+      baseConfig: generateConfig({
+        vue: true,
+        typescript: {
+          vueComponents: true,
+        },
+      }),
     });
 
-    test('with TypeScript components', async function () {
-      const eslint = createESLint({
-        baseConfig: generateConfig({
-          vue: true,
-          typescript: {
-            vueComponents: true,
-          },
-        }),
-      });
+    const results = cleanResults(await eslint.lintFiles('component-typescript.vue'));
 
-      const results = cleanResults(await eslint.lintFiles('component-typescript.vue'));
-
-      expect(results[0].messages).toMatchInlineSnapshot(`
+    expect(results[0].messages).toMatchInlineSnapshot(`
         Array [
           Object {
             "column": 5,
@@ -199,27 +198,25 @@ describe('functional', function () {
           },
         ]
       `);
-    });
   });
 
-  describe('TypeScript', function () {
-    test('basic lint', async function () {
-      const eslint = createESLint({
-        baseConfig: generateConfig({
-          typescript: true,
-        }),
-      });
+  it('should lint TypeScript code', async function () {
+    const eslint = createESLint({
+      baseConfig: generateConfig({
+        typescript: true,
+      }),
+    });
 
-      const results = cleanResults(
-        await eslint.lintText(
-          `const str: any = 'foo'
+    const results = cleanResults(
+      await eslint.lintText(
+        `const str: any = 'foo'
 console.log(str)      
 `,
-          { filePath: 'file.ts' }
-        )
-      );
+        { filePath: 'file.ts' }
+      )
+    );
 
-      expect(results[0].messages).toMatchInlineSnapshot(`
+    expect(results[0].messages).toMatchInlineSnapshot(`
         Array [
           Object {
             "column": 12,
@@ -259,6 +256,5 @@ console.log(str)
           },
         ]
       `);
-    });
   });
 });

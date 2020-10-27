@@ -148,9 +148,9 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
       },
     },
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['*.ts', '*.tsx'].concat(options.typescript.vueComponents ? ['*.vue'] : []),
       rules: {
-        // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
+        // The core 'no-unused-vars' rules (in the eslint:recommended ruleset)
         // does not work with type definitions
         'no-unused-vars': 'off',
         camelcase: 'off',
