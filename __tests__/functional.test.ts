@@ -348,6 +348,54 @@ console.log(str)
   });
 
   describe('Rule', function () {
+    describe('vue/no-bare-strings-in-template', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>Hello</div>
+</template>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "column": 8,
+              "endColumn": 13,
+              "endLine": 2,
+              "line": 2,
+              "message": "Unexpected non-translated string used.",
+              "messageId": "unexpected",
+              "nodeType": "VText",
+              "ruleId": "vue/no-bare-strings-in-template",
+              "severity": 2,
+            },
+          ]
+        `);
+      });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>
+    {{ $t('hello') }}
+  </div>
+</template>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
+    });
+
     describe('vue/no-duplicate-attr-inheritance', function () {
       it('should fail', async function () {
         eslint = createESLint({
