@@ -100,6 +100,7 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
     'vue/no-bare-strings-in-template': ['error'],
     'vue/no-duplicate-attr-inheritance': ['error'],
     'vue/no-empty-component-block': ['error'],
+    'vue/no-template-target-blank': ['error'],
   };
 
   return config;

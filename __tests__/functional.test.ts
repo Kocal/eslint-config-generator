@@ -496,5 +496,50 @@ export default {
         expect(results[0].messages).toEqual([]);
       });
     });
+
+    describe('vue/no-template-target-blank', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <a href="https://example.com" target="_blank">{{ $t('example') }}</a>
+</template>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "column": 33,
+              "endColumn": 48,
+              "endLine": 2,
+              "line": 2,
+              "message": "Using target=\\"_blank\\" without rel=\\"noopener noreferrer\\" is a security risk.",
+              "nodeType": "VAttribute",
+              "ruleId": "vue/no-template-target-blank",
+              "severity": 2,
+            },
+          ]
+        `);
+      });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <a href="https://example.com" target="_blank" rel="noopener noreferrer">{{ $t('example') }}</a>
+</template>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
+    });
   });
 });
