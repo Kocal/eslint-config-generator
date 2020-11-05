@@ -552,5 +552,62 @@ export default {};
         expect(results[0].messages).toEqual([]);
       });
     });
+
+    describe('vue/v-on-function-call', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>
+    <button @click="closeModal()">Button</button>
+  </div>
+</template>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "column": 21,
+              "endColumn": 33,
+              "endLine": 3,
+              "fix": Object {
+                "range": Array [
+                  39,
+                  51,
+                ],
+                "text": "closeModal",
+              },
+              "line": 3,
+              "message": "Method calls without arguments inside of 'v-on' directives must not have parentheses.",
+              "nodeType": "CallExpression",
+              "ruleId": "vue/v-on-function-call",
+              "severity": 2,
+            },
+          ]
+        `);
+      });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>
+    <button @click="closeModal">Button</button>
+    <button @click="closeModal(args)">Button</button>
+  </div>
+</template>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
+    });
   });
 });

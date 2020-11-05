@@ -66,6 +66,7 @@ describe('Configuration generator', function () {
         'vue/no-empty-component-block': ['error'],
         'vue/no-template-target-blank': ['error'],
         'vue/padding-line-between-blocks': ['error'],
+        'vue/v-on-function-call': ['error'],
       });
     });
 
