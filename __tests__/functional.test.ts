@@ -80,63 +80,45 @@ describe('Functional', function () {
     const results = cleanResults(await eslint.lintFiles('component.vue'));
 
     expect(results[0].messages).toMatchInlineSnapshot(`
-        Array [
-          Object {
-            "column": 8,
-            "line": 2,
-            "message": "Unexpected non-translated string used.",
-            "ruleId": "vue/no-bare-strings-in-template",
-          },
-          Object {
-            "column": 5,
-            "line": 4,
-            "message": "Component name \\"transition\\" is not PascalCase.",
-            "ruleId": "vue/component-name-in-template-casing",
-          },
-          Object {
-            "column": 29,
-            "line": 5,
-            "message": "Unexpected non-translated string used.",
-            "ruleId": "vue/no-bare-strings-in-template",
-          },
-          Object {
-            "column": 9,
-            "line": 7,
-            "message": "Disallow self-closing on HTML void elements (<img/>).",
-            "ruleId": "vue/html-self-closing",
-          },
-          Object {
-            "column": 29,
-            "line": 14,
-            "message": "Delete \`·\`",
-            "ruleId": "prettier/prettier",
-          },
-          Object {
-            "column": 5,
-            "line": 19,
-            "message": "Component name \\"v-component\\" is not PascalCase.",
-            "ruleId": "vue/component-name-in-template-casing",
-          },
-          Object {
-            "column": 18,
-            "line": 19,
-            "message": "Unexpected non-translated string used.",
-            "ruleId": "vue/no-bare-strings-in-template",
-          },
-          Object {
-            "column": 5,
-            "line": 31,
-            "message": "Unexpected console statement.",
-            "ruleId": "no-console",
-          },
-          Object {
-            "column": 17,
-            "line": 31,
-            "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
-            "ruleId": "prettier/prettier",
-          },
-        ]
-      `);
+      Array [
+        Object {
+          "column": 5,
+          "line": 4,
+          "message": "Component name \\"transition\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 9,
+          "line": 7,
+          "message": "Disallow self-closing on HTML void elements (<img/>).",
+          "ruleId": "vue/html-self-closing",
+        },
+        Object {
+          "column": 29,
+          "line": 14,
+          "message": "Delete \`·\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 5,
+          "line": 19,
+          "message": "Component name \\"v-component\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 5,
+          "line": 31,
+          "message": "Unexpected console statement.",
+          "ruleId": "no-console",
+        },
+        Object {
+          "column": 17,
+          "line": 31,
+          "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
+          "ruleId": "prettier/prettier",
+        },
+      ]
+    `);
   });
 
   it('should lint Vue code with TypeScript support on .vue files', async function () {
@@ -152,99 +134,81 @@ describe('Functional', function () {
     const results = cleanResults(await eslint.lintFiles('component-typescript.vue'));
 
     expect(results[0].messages).toMatchInlineSnapshot(`
-        Array [
-          Object {
-            "column": 8,
-            "line": 2,
-            "message": "Unexpected non-translated string used.",
-            "ruleId": "vue/no-bare-strings-in-template",
-          },
-          Object {
-            "column": 5,
-            "line": 4,
-            "message": "Component name \\"transition\\" is not PascalCase.",
-            "ruleId": "vue/component-name-in-template-casing",
-          },
-          Object {
-            "column": 29,
-            "line": 5,
-            "message": "Replace \`⏎········my·image:·<img·src=\\"https://example.com/image.png\\"·/>⏎······\` with \`my·image:·<img·src=\\"https://example.com/image.png\\"·/>\`",
-            "ruleId": "prettier/prettier",
-          },
-          Object {
-            "column": 29,
-            "line": 5,
-            "message": "Unexpected non-translated string used.",
-            "ruleId": "vue/no-bare-strings-in-template",
-          },
-          Object {
-            "column": 19,
-            "line": 6,
-            "message": "Disallow self-closing on HTML void elements (<img/>).",
-            "ruleId": "vue/html-self-closing",
-          },
-          Object {
-            "column": 28,
-            "line": 13,
-            "message": "Delete \`·\`",
-            "ruleId": "prettier/prettier",
-          },
-          Object {
-            "column": 5,
-            "line": 18,
-            "message": "Component name \\"v-component\\" is not PascalCase.",
-            "ruleId": "vue/component-name-in-template-casing",
-          },
-          Object {
-            "column": 18,
-            "line": 18,
-            "message": "Unexpected non-translated string used.",
-            "ruleId": "vue/no-bare-strings-in-template",
-          },
-          Object {
-            "column": 3,
-            "line": 27,
-            "message": "Type boolean trivially inferred from a boolean literal, remove type annotation.",
-            "ruleId": "@typescript-eslint/no-inferrable-types",
-          },
-          Object {
-            "column": 3,
-            "line": 29,
-            "message": "Missing return type on function.",
-            "ruleId": "@typescript-eslint/explicit-module-boundary-types",
-          },
-          Object {
-            "column": 10,
-            "line": 29,
-            "message": "Expected 'this' to be used by class method 'mounted'.",
-            "ruleId": "class-methods-use-this",
-          },
-          Object {
-            "column": 5,
-            "line": 30,
-            "message": "Unexpected console statement.",
-            "ruleId": "no-console",
-          },
-          Object {
-            "column": 17,
-            "line": 30,
-            "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
-            "ruleId": "prettier/prettier",
-          },
-          Object {
-            "column": 12,
-            "line": 34,
-            "message": "Expected 'this' to be used by class method 'onVisible'.",
-            "ruleId": "class-methods-use-this",
-          },
-          Object {
-            "column": 5,
-            "line": 35,
-            "message": "Unexpected console statement.",
-            "ruleId": "no-console",
-          },
-        ]
-      `);
+      Array [
+        Object {
+          "column": 5,
+          "line": 4,
+          "message": "Component name \\"transition\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 29,
+          "line": 5,
+          "message": "Replace \`⏎········my·image:·<img·src=\\"https://example.com/image.png\\"·/>⏎······\` with \`my·image:·<img·src=\\"https://example.com/image.png\\"·/>\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 19,
+          "line": 6,
+          "message": "Disallow self-closing on HTML void elements (<img/>).",
+          "ruleId": "vue/html-self-closing",
+        },
+        Object {
+          "column": 28,
+          "line": 13,
+          "message": "Delete \`·\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 5,
+          "line": 18,
+          "message": "Component name \\"v-component\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 3,
+          "line": 27,
+          "message": "Type boolean trivially inferred from a boolean literal, remove type annotation.",
+          "ruleId": "@typescript-eslint/no-inferrable-types",
+        },
+        Object {
+          "column": 3,
+          "line": 29,
+          "message": "Missing return type on function.",
+          "ruleId": "@typescript-eslint/explicit-module-boundary-types",
+        },
+        Object {
+          "column": 10,
+          "line": 29,
+          "message": "Expected 'this' to be used by class method 'mounted'.",
+          "ruleId": "class-methods-use-this",
+        },
+        Object {
+          "column": 5,
+          "line": 30,
+          "message": "Unexpected console statement.",
+          "ruleId": "no-console",
+        },
+        Object {
+          "column": 17,
+          "line": 30,
+          "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 12,
+          "line": 34,
+          "message": "Expected 'this' to be used by class method 'onVisible'.",
+          "ruleId": "class-methods-use-this",
+        },
+        Object {
+          "column": 5,
+          "line": 35,
+          "message": "Unexpected console statement.",
+          "ruleId": "no-console",
+        },
+      ]
+    `);
   });
 
   it('should lint TypeScript code', async function () {
@@ -361,21 +325,7 @@ console.log(str)
 </template>
 `);
 
-        expect(results[0].messages).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "column": 8,
-              "endColumn": 13,
-              "endLine": 2,
-              "line": 2,
-              "message": "Unexpected non-translated string used.",
-              "messageId": "unexpected",
-              "nodeType": "VText",
-              "ruleId": "vue/no-bare-strings-in-template",
-              "severity": 2,
-            },
-          ]
-        `);
+        expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
       });
 
       it('should pass', async function () {
