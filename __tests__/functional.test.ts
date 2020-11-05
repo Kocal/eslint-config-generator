@@ -491,5 +491,66 @@ export default {
         expect(results[0].messages).toEqual([]);
       });
     });
+
+    describe('vue/padding-line-between-blocks', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>Hello world</div>
+</template>
+<script>
+export default {};
+</script>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+            Array [
+              Object {
+                "column": 1,
+                "endColumn": 10,
+                "endLine": 6,
+                "fix": Object {
+                  "range": Array [
+                    47,
+                    47,
+                  ],
+                  "text": "
+            ",
+                },
+                "line": 4,
+                "message": "Expected blank line before this block.",
+                "messageId": "always",
+                "nodeType": "VElement",
+                "ruleId": "vue/padding-line-between-blocks",
+                "severity": 2,
+              },
+            ]
+          `);
+      });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<template>
+  <div>Hello world</div>
+</template>
+
+<script>
+export default {};
+</script>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
+    });
   });
 });

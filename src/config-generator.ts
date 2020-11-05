@@ -100,6 +100,7 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
     'vue/no-duplicate-attr-inheritance': ['error'],
     'vue/no-empty-component-block': ['error'],
     'vue/no-template-target-blank': ['error'],
+    'vue/padding-line-between-blocks': ['error'],
   };
 
   return config;
