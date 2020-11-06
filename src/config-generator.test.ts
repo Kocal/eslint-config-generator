@@ -193,7 +193,7 @@ describe('Configuration generator', function () {
 
       const config = generateConfig(userOptions);
 
-      expect(config.parserOptions.extraFileExtensions).toBeUndefined();
+      expect(config.parserOptions.extraFileExtensions).toEqual(['.vue']);
       expect(config.overrides).toMatchObject([
         {
           files: ['*.js', '*.jsx', '*.vue'],

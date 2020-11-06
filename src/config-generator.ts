@@ -120,12 +120,9 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
 
   if (options.vue) {
     config.parserOptions.parser = '@typescript-eslint/parser';
+    config.parserOptions.extraFileExtensions = ['.vue'];
   } else {
     config.parser = '@typescript-eslint/parser';
-  }
-
-  if (options.typescript.vueComponents) {
-    config.parserOptions.extraFileExtensions = ['.vue'];
   }
 
   config.rules = {
