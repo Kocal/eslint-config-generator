@@ -102,6 +102,7 @@ function configureVue(previousConfig: ESLintConfig, options: Options): ESLintCon
     'vue/no-template-target-blank': ['error'],
     'vue/padding-line-between-blocks': ['error'],
     'vue/v-on-function-call': ['error'],
+    'vue/no-boolean-default': ['error'],
   };
 
   return config;

@@ -609,5 +609,63 @@ export default {};
         expect(results[0].messages).toEqual([]);
       });
     });
+
+    describe('vue/no-boolean-default', function () {
+      it('should fail', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<script>
+export default {
+  props: {
+    rounded: {
+      type: Boolean,
+      default: true,
+    },
+  },
+};
+</script>
+`);
+
+        expect(results[0].messages).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "column": 7,
+              "endColumn": 20,
+              "endLine": 6,
+              "line": 6,
+              "message": "Boolean prop should not set a default (Vue defaults it to false).",
+              "nodeType": "Property",
+              "ruleId": "vue/no-boolean-default",
+              "severity": 2,
+            },
+          ]
+        `);
+      });
+
+      it('should pass', async function () {
+        eslint = createESLint({
+          baseConfig: generateConfig({
+            vue: true,
+          }),
+        });
+
+        const results = await lintVueCode(`<script>
+export default {
+  props: {
+    rounded: {
+      type: Boolean,
+    },
+  },
+};
+</script>
+`);
+
+        expect(results[0].messages).toEqual([]);
+      });
+    });
   });
 });
