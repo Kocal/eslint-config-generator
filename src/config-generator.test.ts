@@ -59,10 +59,15 @@ describe('Configuration generator', function () {
           `PascalCase`,
           {
             registeredComponentsOnly: false,
-            ignores: [],
           },
         ],
         'vue/html-self-closing': ['error'],
+        'vue/no-duplicate-attr-inheritance': ['error'],
+        'vue/no-empty-component-block': ['error'],
+        'vue/no-template-target-blank': ['error'],
+        'vue/padding-line-between-blocks': ['error'],
+        'vue/v-on-function-call': ['error'],
+        'vue/no-boolean-default': ['error'],
       });
     });
 

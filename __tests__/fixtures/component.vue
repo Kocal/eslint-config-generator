@@ -3,7 +3,8 @@
     Hello world!
     <transition name="fade">
       <div v-show="visible">
-        my image: <img src="https://example.com/image.png" />
+        my image:
+        <img src="https://example.com/image.png" />
       </div>
     </transition>
 
