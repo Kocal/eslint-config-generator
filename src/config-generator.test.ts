@@ -61,7 +61,7 @@ describe('Configuration generator', function () {
             registeredComponentsOnly: false,
           },
         ],
-        'vue/html-self-closing': ['error'],
+        'vue/html-self-closing': ['error', { html: { void: 'always' } }],
         'vue/no-duplicate-attr-inheritance': ['error'],
         'vue/no-empty-component-block': ['error'],
         'vue/no-template-target-blank': ['error'],

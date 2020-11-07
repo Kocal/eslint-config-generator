@@ -8,6 +8,7 @@
       </div>
     </transition>
 
+    <input type="text" name="my-input" />
     <slot />
 
     <MyComponent>
