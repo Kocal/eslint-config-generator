@@ -139,6 +139,7 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
       { selector: 'typeLike', format: ['PascalCase'] },
       { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] },
     ],
+    '@typescript-eslint/no-var-requires': 'off',
   };
 
   config.overrides = (config.overrides || []).concat(
