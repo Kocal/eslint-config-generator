@@ -2,7 +2,8 @@
   "name": "@yproximite/eslint-config-generator",
   "version": "0.0.0-development",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "description": "ESLint config generator for our internal and public projects. Allows to configure Vue, TypeScript, Prettier, ... plugins.",
   "repository": "https://github.com/Yproximite/eslint-config-generator.git",
@@ -18,7 +19,8 @@
     "test:ts": "tsc  --noEmit",
     "test:unit": "jest",
     "prelint": "yarn run build",
-    "lint": "eslint . --ext .js,.ts"
+    "lint": "eslint . --ext .js,.ts",
+    "semantic-release": "semantic-release"
   },
   "engines": {
     "node": "^10.13.0 || ^12.13.0 || >=14.0.0"
@@ -52,6 +54,7 @@
     "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@kocal/semantic-release-preset": "^2.0.9",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/eslint": "^7.2.4",
@@ -60,6 +63,7 @@
     "jest": "^26.6.0",
     "prettier": "^2.1.2",
     "rollup": "^2.32.0",
+    "semantic-release": "^17.2.2",
     "typescript": "^4.0.3",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.0.2"
