@@ -38,6 +38,10 @@ async function lintTypeScriptDefinitionCode(code: string): Promise<ESLint.LintRe
   return lintCode(code, { filePath: 'file.d.ts' });
 }
 
+async function lintTypeScriptJSXDefinitionCode(code: string): Promise<ESLint.LintResult[]> {
+  return lintCode(code, { filePath: 'file.tsx' });
+}
+
 async function lintVueCode(code: string): Promise<ESLint.LintResult[]> {
   return lintCode(code, { filePath: 'file.vue' });
 }
@@ -322,6 +326,35 @@ console.log(str)
 `);
 
     expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
+  });
+
+  it('should lint TSX code ', async function () {
+    eslint = createESLint({
+      baseConfig: generateConfig({
+        typescript: true,
+      }),
+    });
+
+    const results = await lintTypeScriptJSXDefinitionCode(`function HelloWorld() {
+  return <div>Hello world!</div>;
+}
+`);
+
+    expect(results[0].messages).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "column": 10,
+          "endColumn": 20,
+          "endLine": 1,
+          "line": 1,
+          "message": "'HelloWorld' is defined but never used.",
+          "messageId": "unusedVar",
+          "nodeType": "Identifier",
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "severity": 1,
+        },
+      ]
+    `);
   });
 
   describe('Rule', function () {

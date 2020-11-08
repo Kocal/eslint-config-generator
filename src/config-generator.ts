@@ -138,6 +138,7 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
       },
       { selector: 'typeLike', format: ['PascalCase'] },
       { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
+      { selector: 'function', format: ['camelCase', 'PascalCase'] },
     ],
     '@typescript-eslint/no-var-requires': 'off',
   };

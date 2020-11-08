@@ -125,6 +125,7 @@ describe('Configuration generator', function () {
           },
           { selector: 'typeLike', format: ['PascalCase'] },
           { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
+          { selector: 'function', format: ['camelCase', 'PascalCase'] },
         ],
       });
       expect(config.overrides).toMatchObject([
