@@ -140,6 +140,8 @@ describe('Configuration generator', function () {
           rules: {
             'no-unused-vars': 'off',
             camelcase: 'off',
+            'global-require': 'off',
+            'no-use-before-define': 'off',
           },
         },
       ]);

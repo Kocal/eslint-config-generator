@@ -157,6 +157,8 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
         // does not work with type definitions
         'no-unused-vars': 'off',
         camelcase: 'off',
+        'global-require': 'off',
+        'no-use-before-define': 'off',
       },
     }
   );
