@@ -34,6 +34,10 @@ async function lintTypeScriptCode(code: string): Promise<ESLint.LintResult[]> {
   return lintCode(code, { filePath: 'file.ts' });
 }
 
+async function lintTypeScriptDefinitionCode(code: string): Promise<ESLint.LintResult[]> {
+  return lintCode(code, { filePath: 'file.d.ts' });
+}
+
 async function lintVueCode(code: string): Promise<ESLint.LintResult[]> {
   return lintCode(code, { filePath: 'file.vue' });
 }
@@ -297,6 +301,27 @@ console.log(str)
         },
       ]
     `);
+  });
+
+  it('should lint TypeScript code and valide namings case', async function () {
+    eslint = createESLint({
+      baseConfig: generateConfig({
+        typescript: true,
+      }),
+    });
+
+    const results = await lintTypeScriptDefinitionCode(`declare namespace NodeJS {
+  interface ProcessEnv {
+    readonly NODE_ENV: 'development' | 'production';
+  }
+
+  interface Process {
+    env: ProcessEnv;
+  }
+}
+`);
+
+    expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
   });
 
   describe('Rule', function () {

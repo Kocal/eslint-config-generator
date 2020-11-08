@@ -137,7 +137,7 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
         trailingUnderscore: 'allow',
       },
       { selector: 'typeLike', format: ['PascalCase'] },
-      { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] },
+      { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
     ],
     '@typescript-eslint/no-var-requires': 'off',
   };

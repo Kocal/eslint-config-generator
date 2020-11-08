@@ -124,7 +124,7 @@ describe('Configuration generator', function () {
             trailingUnderscore: 'allow',
           },
           { selector: 'typeLike', format: ['PascalCase'] },
-          { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase'] },
+          { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
         ],
       });
       expect(config.overrides).toMatchObject([
