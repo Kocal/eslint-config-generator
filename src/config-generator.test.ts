@@ -62,7 +62,7 @@ describe('Configuration generator', function () {
               '**/.eslintrc.js',
               '**/postcss.config.js',
               '**/tailwind.config.js',
-              '**/vite.config.js',
+              '**/vite.config.{js,ts}',
               '**/prettier.config.js',
             ],
             optionalDependencies: false,
