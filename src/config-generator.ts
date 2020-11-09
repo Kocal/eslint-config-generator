@@ -53,6 +53,40 @@ function getBaseConfig(options: Options): ESLintConfig {
           return acc;
         }, {} as { [k: string]: 'never' }),
       ],
+      // Forbid the use of extraneous packages
+      // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+      // paths are treated both as absolute paths, and relative to process.cwd()
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          devDependencies: [
+            'test/**', // tape, common npm pattern
+            'tests/**', // also common npm pattern
+            'spec/**', // mocha, rspec-like pattern
+            '**/__tests__/**', // jest pattern
+            '**/__mocks__/**', // jest pattern
+            '**/cypress/**', // cypress pattern
+            'test.{js,jsx}', // repos with a single test file
+            'test-*.{js,jsx}', // repos with multiple top-level test files
+            '**/*{.,_}{test,spec}.{js,jsx}', // tests where the extension or filename suffix denotes that it is a test
+            '**/jest.config.js', // jest config
+            '**/jest.setup.js', // jest setup
+            '**/vue.config.js', // vue-cli config
+            '**/webpack.config.js', // webpack config
+            '**/webpack.config.*.js', // webpack config
+            '**/rollup.config.js', // rollup config
+            '**/rollup.config.*.js', // rollup config
+            '**/gulpfile.js', // gulp config
+            '**/gulpfile.*.js', // gulp config
+            '**/.eslintrc.js', // eslint config
+            '**/postcss.config.js', // postcss config
+            '**/tailwind.config.js', // tailwind config
+            '**/vite.config.js', // vite config
+            '**/prettier.config.js', // prettier config
+          ],
+          optionalDependencies: false,
+        },
+      ],
     },
   };
 }
