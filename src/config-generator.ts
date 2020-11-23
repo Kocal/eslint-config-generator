@@ -194,6 +194,7 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
         camelcase: 'off',
         'global-require': 'off',
         'no-use-before-define': 'off',
+        'no-useless-constructor': 'off',
       },
     }
   );
