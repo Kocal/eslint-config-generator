@@ -80,7 +80,7 @@ function getBaseConfig(options: Options): ESLintConfig {
             '**/gulpfile.*.js', // gulp config
             '**/.eslintrc.js', // eslint config
             '**/postcss.config.js', // postcss config
-            '**/tailwind.config.js', // tailwind config
+            '**/tailwind.config.{js,ts}', // tailwind config
             '**/vite.config.{js,ts}', // vite config
             '**/prettier.config.js', // prettier config
           ],

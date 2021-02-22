@@ -61,7 +61,7 @@ describe('Configuration generator', function () {
               '**/gulpfile.*.js',
               '**/.eslintrc.js',
               '**/postcss.config.js',
-              '**/tailwind.config.js',
+              '**/tailwind.config.{js,ts}',
               '**/vite.config.{js,ts}',
               '**/prettier.config.js',
             ],
