@@ -21,10 +21,10 @@ describe('Configuration generator', function () {
       plugins: ['prettier'],
       settings: {
         'import/resolver': {
-          node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'] },
+          node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
           webpack: {},
         },
-        'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+        'import/extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
       },
       rules: {
         semi: ['error', 'always'],
@@ -35,7 +35,7 @@ describe('Configuration generator', function () {
         'import/extensions': [
           'error',
           'always',
-          { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never' },
+          { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never', 'd.ts': 'never' },
         ],
         'import/no-extraneous-dependencies': [
           'error',

@@ -34,7 +34,7 @@ export function normalizeUserOptions(userOptions: UserOptions = {}): Options {
   const vueEnabled = userOptions.vue === true || typeof userOptions.vue === 'object';
   const options: Options = {
     root: typeof userOptions.root === 'undefined' ? true : userOptions.root,
-    knownExtensions: userOptions.knownExtensions || ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+    knownExtensions: userOptions.knownExtensions || ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
     vue:
       typeof userOptions.vue === 'undefined'
         ? false

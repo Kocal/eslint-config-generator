@@ -6,7 +6,7 @@ describe('Options', function () {
       const userOptions: UserOptions = {};
       const expectedOptions: Options = {
         root: true,
-        knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+        knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
         vue: false,
         typescript: false,
       };
@@ -20,7 +20,7 @@ describe('Options', function () {
       };
       const expectedOptions: Options = {
         root: false,
-        knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+        knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
         vue: false,
         typescript: false,
       };
@@ -49,7 +49,7 @@ describe('Options', function () {
         };
         const expectedOptions: Options = {
           root: true,
-          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
           vue: {
             version: 2,
             config: 'recommended',
@@ -68,7 +68,7 @@ describe('Options', function () {
         };
         const expectedOptions: Options = {
           root: true,
-          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
           vue: {
             version: 3,
             config: 'recommended',
@@ -87,7 +87,7 @@ describe('Options', function () {
         };
         const expectedOptions: Options = {
           root: true,
-          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
           vue: {
             version: 2,
             config: 'essential',
@@ -106,7 +106,7 @@ describe('Options', function () {
         };
         const expectedOptions: Options = {
           root: true,
-          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
           vue: false,
           typescript: {
             vueComponents: false,
@@ -123,7 +123,7 @@ describe('Options', function () {
         };
         const expectedOptions: Options = {
           root: true,
-          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
           vue: {
             version: 2,
             config: 'recommended',
@@ -145,7 +145,7 @@ describe('Options', function () {
         };
         const expectedOptions: Options = {
           root: true,
-          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx'],
+          knownExtensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'],
           vue: {
             version: 2,
             config: 'recommended',
