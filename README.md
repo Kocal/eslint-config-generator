@@ -1,15 +1,9 @@
 # ESLint config generator
 
-![Test](https://github.com/kocal/eslint-config-generator/workflows/Test/badge.svg)
+![Test](https://github.com/kocal/eslint-config-generator/workflows/CI/badge.svg)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kocal/eslint-config-generator)
 
-An ESLint config generator for our internal and public projects, with Prettier, Vue, and TypeScript support.
-
-## Why?
-
-The primary goal of this configuration generator is to have the same and _adaptable_ configuration on _all_ of our projects.
-
-In this way, we reduce time and energy costs while maintaining +150 lines of ESLint configuration (for the biggest) accross multiple projects. 
+An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, TypeScript and Prettier support.
 
 ## Features
 
@@ -20,16 +14,6 @@ In this way, we reduce time and energy costs while maintaining +150 lines of ESL
 
 ## Installation
 
-This package is hosted on [GitHub Packages](https://github.com/features/packages), so you must tell to npm/yarn where to download it.
-Please read [Authenticating to GitHub Packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages).
-
-You can run `npm login --registry=https://npm.pkg.github.com --scope=@kocal` **or** create a `.npmrc` file with the following content:
-```
-@kocal:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=<access token>
-```
-
-Then run: 
 ```bash
 $ yarn add --dev @kocal/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0 prettier@^2.0.0
 ```
@@ -41,10 +25,7 @@ In your `.eslintrc.js`:
 ```js
 const { generateConfig } = require('@kocal/eslint-config-generator');
 
-module.exports = generateConfig({
-  vue: true, 
-  typescript: true,
-});
+module.exports = generateConfig();
 ```
 
 ### Vue 
