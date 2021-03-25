@@ -174,6 +174,7 @@ describe('Configuration generator', function () {
             camelcase: 'off',
             'global-require': 'off',
             'no-use-before-define': 'off',
+            'no-loop-func': 'off',
           },
         },
       ]);
@@ -215,6 +216,7 @@ describe('Configuration generator', function () {
             'global-require': 'off',
             'no-use-before-define': 'off',
             'no-useless-constructor': 'off',
+            'no-loop-func': 'off',
           },
         },
       ]);
@@ -247,6 +249,7 @@ describe('Configuration generator', function () {
             'global-require': 'off',
             'no-use-before-define': 'off',
             'no-useless-constructor': 'off',
+            'no-loop-func': 'off',
           },
         },
       ]);

@@ -195,6 +195,7 @@ function configureTypeScript(previousConfig: ESLintConfig, options: Options): ES
         'global-require': 'off',
         'no-use-before-define': 'off',
         'no-useless-constructor': 'off',
+        'no-loop-func': 'off',
       },
     }
   );
