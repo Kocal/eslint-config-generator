@@ -1,7 +1,7 @@
 # ESLint config generator
 
-![Test](https://github.com/Yproximite/eslint-config-generator/workflows/Test/badge.svg)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/yproximite/eslint-config-generator)
+![Test](https://github.com/kocal/eslint-config-generator/workflows/Test/badge.svg)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/kocal/eslint-config-generator)
 
 An ESLint config generator for our internal and public projects, with Prettier, Vue, and TypeScript support.
 
@@ -23,15 +23,15 @@ In this way, we reduce time and energy costs while maintaining +150 lines of ESL
 This package is hosted on [GitHub Packages](https://github.com/features/packages), so you must tell to npm/yarn where to download it.
 Please read [Authenticating to GitHub Packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages).
 
-You can run `npm login --registry=https://npm.pkg.github.com --scope=@yproximite` **or** create a `.npmrc` file with the following content:
+You can run `npm login --registry=https://npm.pkg.github.com --scope=@kocal` **or** create a `.npmrc` file with the following content:
 ```
-@yproximite:registry=https://npm.pkg.github.com/
+@kocal:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=<access token>
 ```
 
 Then run: 
 ```bash
-$ yarn add --dev @yproximite/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0 prettier@^2.0.0
+$ yarn add --dev @kocal/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0 prettier@^2.0.0
 ```
 
 ## Usage
@@ -39,7 +39,7 @@ $ yarn add --dev @yproximite/eslint-config-generator eslint@^7.0.0 @babel/eslint
 In your `.eslintrc.js`:
 
 ```js
-const { generateConfig } = require('@yproximite/eslint-config-generator');
+const { generateConfig } = require('@kocal/eslint-config-generator');
 
 module.exports = generateConfig({
   vue: true, 

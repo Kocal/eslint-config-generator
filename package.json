@@ -1,13 +1,12 @@
 {
-  "name": "@yproximite/eslint-config-generator",
+  "name": "@kocal/eslint-config-generator",
   "version": "0.0.0-development",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "description": "ESLint config generator for our internal and public projects. Allows to configure Vue, TypeScript, Prettier, ... plugins.",
-  "repository": "https://github.com/Yproximite/eslint-config-generator.git",
-  "author": "Hugo Alliaume <kocal@live.fr>",
+  "repository": "https://github.com/kocal/eslint-config-generator.git",
+  "author": "Hugo Alliaume <hugo@alliau.me>",
   "license": "MIT",
   "scripts": {
     "prebuild": "rm -fr dist",
