@@ -94,7 +94,15 @@ function getBaseConfig(options: Options): ESLintConfig {
 function configurePrettier(previousConfig: ESLintConfig, options: Options): ESLintConfig {
   const config = { ...previousConfig };
 
-  config.extends = (config.extends || []).concat('prettier');
+  if (typeof config.extends === 'undefined') {
+    config.extends = [];
+  }
+
+  if (typeof config.extends === 'string') {
+    config.extends = [config.extends];
+  }
+
+  config.extends.push('prettier');
   if (options.vue) {
     config.extends.push('prettier/vue');
   }
