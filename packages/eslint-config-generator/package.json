@@ -23,7 +23,7 @@
     "test:unit": "jest",
     "prelint": "npm run build",
     "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "npm run lint --finx"
+    "lint:fix": "npm run lint -- --fix"
   },
   "engines": {
     "node": "^10.13.0 || ^12.13.0 || >=14.0.0"
