@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "ESLint config generator for our internal and public projects. Allows to configure Vue, TypeScript, Prettier, ... plugins.",
+  "description": "An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, TypeScript and Prettier support.",
   "repository": "https://github.com/kocal/eslint-config-generator.git",
   "author": "Hugo Alliaume <hugo@alliau.me>",
   "license": "MIT",
