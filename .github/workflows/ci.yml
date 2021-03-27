@@ -5,7 +5,7 @@ on:
         branches:
             - main
     pull_request:
-        types: [ opened, synchronize, reopened, ready_for_review ]
+        types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
     test:
@@ -14,25 +14,42 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                node-version: [ 10.x, 12.x, 14.x ]
+                node-version: [10.x, 12.x, 14.x]
 
         steps:
             -   uses: actions/checkout@v2
+                with:
+                    fetch-depth: '100'
 
             -   name: Use Node.js ${{ matrix.node-version }}
                 uses: actions/setup-node@v2
                 with:
                     node-version: ${{ matrix.node-version }}
 
-            -   run: yarn install --frozen-lockfile
+            -   name: 'Rush: Checking for missing change logs...'
+                run: node common/scripts/install-run-rush.js change -v
 
-            -   run: yarn test
+            -   name: 'Rush: Installing...'
+                run: node common/scripts/install-run-rush.js install
+
+            -   name: 'Rush: Building...'
+                run: node common/scripts/install-run-rush.js rebuild --verbose
 
     lint:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v2
+                with:
+                    fetch-depth: '100'
 
-            -   run: yarn install --frozen-lockfile
+            -   name: 'Rush: Checking for missing change logs...'
+                run: node common/scripts/install-run-rush.js change -v
 
-            -   run: yarn lint
+            -   name: 'Rush: Installing...'
+                run: node common/scripts/install-run-rush.js install
+
+            -   name: 'Rush: Building...'
+                run: node common/scripts/install-run-rush.js rebuild --verbose
+
+            -   name: 'Rush: Building...'
+                run: node common/scripts/install-run-rush.js lint --verbose
