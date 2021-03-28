@@ -12,16 +12,13 @@
   "author": "Hugo Alliaume <hugo@alliau.me>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rm -fr dist",
-    "build": "npm run build:js && npm run build:types",
+    "build": "rm -fr dist && npm run build:js && npm run build:types",
     "build:js": "rollup -c",
     "build:types": "tsc --emitDeclarationOnly",
     "rebuild": "npm run build",
-    "pretest": "npm run build",
     "test": "npm run test:ts && npm run test:unit",
-    "test:ts": "tsc  --noEmit",
+    "test:ts": "tsc --noEmit",
     "test:unit": "jest",
-    "prelint": "npm run build",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -46,6 +43,8 @@
   },
   "peerDependencies": {
     "@babel/eslint-parser": "7.0.0",
+    "@kocal/eslint-config-generator-plugin-typescript": "workspace:*",
+    "@kocal/eslint-config-generator-plugin-vue": "workspace:*",
     "eslint": "^7.0.0",
     "prettier": "^2.0.0"
   },

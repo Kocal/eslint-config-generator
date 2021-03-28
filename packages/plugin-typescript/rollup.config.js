@@ -13,7 +13,6 @@ export default {
       extensions: ['.js', '.ts'],
     }),
     babel({
-      configFile: `${__dirname}/../../babel.config.js`,
       extensions: ['.js', '.ts'],
       babelHelpers: 'bundled',
     }),
