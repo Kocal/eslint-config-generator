@@ -35,6 +35,9 @@ jobs:
             -   name: 'Rush: Building...'
                 run: node common/scripts/install-run-rush.js rebuild --verbose
 
+            -   name: 'Rush: Testing...'
+                run: node common/scripts/install-run-rush.js test --verbose
+
     lint:
         runs-on: ubuntu-latest
         steps:
