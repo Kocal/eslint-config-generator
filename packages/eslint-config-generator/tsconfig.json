@@ -3,7 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "dist",
-    "types": ["@types/jest", "@types/eslint"]
+    "types": ["@types/jest", "@types/eslint", "@types/node"]
   },
   "include": [
     "src/**/*"

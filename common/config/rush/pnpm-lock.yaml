@@ -14,10 +14,13 @@ importers:
       '@babel/eslint-parser': 7.13.10_63214fcdaae50def4bee3e0a6e6337c2
       '@babel/preset-env': 7.13.12_@babel+core@7.13.13
       '@babel/preset-typescript': 7.13.0_@babel+core@7.13.13
+      '@kocal/eslint-config-generator-plugin-typescript': link:../plugin-typescript
+      '@kocal/eslint-config-generator-plugin-vue': link:../plugin-vue
       '@rollup/plugin-babel': 5.3.0_4b182fe8ebf5ef04e4e83ea4fbf0029c
       '@rollup/plugin-node-resolve': 9.0.0_rollup@2.43.0
       '@types/eslint': 7.2.7
       '@types/jest': 26.0.22
+      '@types/node': 14.14.37
       eslint: 7.23.0
       jest: 26.6.3
       prettier: 2.2.1
@@ -28,10 +31,13 @@ importers:
       '@babel/eslint-parser': ^7.12.1
       '@babel/preset-env': ^7.12.1
       '@babel/preset-typescript': ^7.12.1
+      '@kocal/eslint-config-generator-plugin-typescript': workspace:*
+      '@kocal/eslint-config-generator-plugin-vue': workspace:*
       '@rollup/plugin-babel': ^5.2.1
       '@rollup/plugin-node-resolve': ^9.0.0
       '@types/eslint': ^7.2.4
       '@types/jest': ^26.0.14
+      '@types/node': ^14.14.37
       eslint: ^7.11.0
       eslint-config-airbnb-base: ^14.2.0
       eslint-config-prettier: ^6.13.0
@@ -6571,3 +6577,4 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
+registry: ''
