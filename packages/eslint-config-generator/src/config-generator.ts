@@ -1,10 +1,7 @@
-import { Linter } from 'eslint';
+import { ESLintConfig } from './config';
 import { normalizeUserOptions, Options, UserOptions } from './options';
-
-export type ESLintConfig = Linter.Config & {
-  extends?: string[];
-  parserOptions: Linter.ParserOptions;
-};
+import { isPackageInstalled } from './package-helper';
+import { PluginCallback } from './plugin';
 
 function getBaseConfig(options: Options): ESLintConfig {
   return {
@@ -118,105 +115,31 @@ function configurePrettier(previousConfig: ESLintConfig, options: Options): ESLi
   return config;
 }
 
-function configureVue(previousConfig: ESLintConfig, options: Options): ESLintConfig {
-  const config = { ...previousConfig };
+function runPlugin(name: string, previousConfig: ESLintConfig, options: Options): ESLintConfig {
+  const pkgName = `@kocal/eslint-config-generator-plugin-${name}`;
 
-  if (options.vue === false) {
-    return config;
+  if (!isPackageInstalled(pkgName)) {
+    throw new Error(`Package "${pkgName}" is missing in your dependencies.`);
   }
 
-  const pluginVueConfig = `${options.vue.version === 3 ? 'vue3-' : ''}${options.vue.config}`;
+  const pluginRequire: PluginCallback & { default: PluginCallback } = require(pkgName); // eslint-disable-line import/no-dynamic-require
+  const plugin: PluginCallback = typeof pluginRequire.default === 'function' ? pluginRequire.default : pluginRequire;
 
-  config.extends?.unshift(`plugin:vue/${pluginVueConfig}`);
-  config.parser = 'vue-eslint-parser';
-  config.rules = {
-    ...(config.rules || {}),
-    'vue/component-name-in-template-casing': [
-      `error`,
-      `PascalCase`,
-      {
-        registeredComponentsOnly: false,
-      },
-    ],
-    'vue/html-self-closing': ['error', { html: { void: 'always' } }],
-    'vue/no-duplicate-attr-inheritance': ['error'],
-    'vue/no-empty-component-block': ['error'],
-    'vue/no-template-target-blank': ['error'],
-    'vue/padding-line-between-blocks': ['error'],
-    'vue/v-on-function-call': ['error'],
-    'vue/no-boolean-default': ['error'],
-  };
-
-  return config;
-}
-
-function configureTypeScript(previousConfig: ESLintConfig, options: Options): ESLintConfig {
-  const config = { ...previousConfig };
-
-  if (options.typescript === false) {
-    return config;
-  }
-
-  config.extends?.push('plugin:@typescript-eslint/eslint-recommended');
-  config.extends?.push('plugin:@typescript-eslint/recommended');
-
-  if (options.vue) {
-    config.parserOptions.parser = '@typescript-eslint/parser';
-    config.parserOptions.extraFileExtensions = ['.vue'];
-  } else {
-    config.parser = '@typescript-eslint/parser';
-  }
-
-  config.rules = {
-    ...config.rules,
-    '@typescript-eslint/naming-convention': [
-      'error',
-      { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
-      {
-        selector: 'variable',
-        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
-        leadingUnderscore: 'allow',
-        trailingUnderscore: 'allow',
-      },
-      { selector: 'typeLike', format: ['PascalCase'] },
-      { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
-      { selector: 'function', format: ['camelCase', 'PascalCase'] },
-    ],
-    '@typescript-eslint/no-var-requires': 'off',
-  };
-
-  config.overrides = (config.overrides || []).concat(
-    {
-      files: ['*.js', '*.jsx'].concat(options.typescript.vueComponents ? [] : ['*.vue']),
-      rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-      },
-    },
-    {
-      files: ['*.ts', '*.tsx'].concat(options.typescript.vueComponents ? ['*.vue'] : []),
-      rules: {
-        // The core 'no-unused-vars' rules (in the eslint:recommended ruleset)
-        // does not work with type definitions
-        'no-unused-vars': 'off',
-        camelcase: 'off',
-        'global-require': 'off',
-        'no-use-before-define': 'off',
-        'no-useless-constructor': 'off',
-        'no-loop-func': 'off',
-      },
-    }
-  );
-
-  return config;
+  return plugin({ config: { ...previousConfig }, options });
 }
 
 export function generateConfig(userOptions: UserOptions = {}): ESLintConfig {
   const options = normalizeUserOptions(userOptions);
-
   let config = getBaseConfig(options);
-  config = configureVue(config, options);
-  config = configureTypeScript(config, options);
+
+  if (options.vue) {
+    config = runPlugin('vue', config, options);
+  }
+
+  if (options.typescript) {
+    config = runPlugin('typescript', config, options);
+  }
+
   config = configurePrettier(config, options);
 
   return config;

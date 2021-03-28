@@ -43,8 +43,6 @@
   },
   "peerDependencies": {
     "@babel/eslint-parser": "7.0.0",
-    "@kocal/eslint-config-generator-plugin-typescript": "workspace:*",
-    "@kocal/eslint-config-generator-plugin-vue": "workspace:*",
     "eslint": "^7.0.0",
     "prettier": "^2.0.0"
   },
@@ -53,8 +51,6 @@
     "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
-    "@kocal/eslint-config-generator-plugin-typescript": "workspace:*",
-    "@kocal/eslint-config-generator-plugin-vue": "workspace:*",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/eslint": "^7.2.4",

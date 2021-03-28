@@ -18,7 +18,7 @@
     "rebuild": "npm run build",
     "test": "npm run test:ts && npm run test:unit",
     "test:ts": "tsc --noEmit",
-    "test:unit": "echo 'No unit tests.'",
+    "test:unit": "jest",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -38,6 +38,7 @@
     "@typescript-eslint/parser": "^4.5.0"
   },
   "peerDependencies": {
+    "@kocal/eslint-config-generator": "workspace:*",
     "typescript": "^4.0.0",
     "eslint": "^7.0.0"
   },
@@ -46,6 +47,7 @@
     "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@kocal/eslint-config-generator": "workspace:*",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/eslint": "^7.2.4",

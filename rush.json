@@ -26,7 +26,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-    "pnpmVersion": "5.15.2",
+    "pnpmVersion": "5.18.9",
   // "npmVersion": "4.5.0",
   // "yarnVersion": "1.9.4",
 
@@ -411,9 +411,7 @@
         * locally linked because it would create a cyclic dependency; instead, the last published
         * version will be installed in the Common folder.
         */
-       "cyclicDependencyProjects": [
-         // "my-toolchain"
-       ],
+       "cyclicDependencyProjects": [],
 
        /**
         * If true, then this project will be ignored by the "rush check" command.
@@ -449,14 +447,14 @@
        "packageName": "@kocal/eslint-config-generator-plugin-vue",
        "projectFolder": "packages/plugin-vue",
        "reviewCategory": "tools",
-       "shouldPublish": true
+       "shouldPublish": true,
      },
 
      {
        "packageName": "@kocal/eslint-config-generator-plugin-typescript",
        "projectFolder": "packages/plugin-typescript",
        "reviewCategory": "tools",
-       "shouldPublish": true
+       "shouldPublish": true,
      }
   ]
 }
