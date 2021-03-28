@@ -11,6 +11,21 @@
    * "rush my-global-command --help".
    */
   "commands": [
+    // Re-declare "build" and "rebuild" commands to allow warnings in success build, see https://github.com/microsoft/rushstack/pull/1485
+    {
+      "commandKind": "bulk",
+      "name": "build",
+      "summary": "Build all projects that haven't been built, or have changed since they were last built",
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "rebuild",
+      "summary": "Clean and rebuild the entire set of projects",
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
     {
      "commandKind": "bulk",
       "name": "test",
@@ -26,7 +41,7 @@
     {
      "commandKind": "bulk",
       "name": "lint:fix",
-      "summary": "Lint files and fix them.",
+      "summary": "Lint files and fix them",
       "enableParallelism": true
     }
     // {
