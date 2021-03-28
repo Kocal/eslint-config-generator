@@ -14,8 +14,6 @@ importers:
       '@babel/eslint-parser': 7.13.10_63214fcdaae50def4bee3e0a6e6337c2
       '@babel/preset-env': 7.13.12_@babel+core@7.13.13
       '@babel/preset-typescript': 7.13.0_@babel+core@7.13.13
-      '@kocal/eslint-config-generator-plugin-typescript': link:../plugin-typescript
-      '@kocal/eslint-config-generator-plugin-vue': link:../plugin-vue
       '@rollup/plugin-babel': 5.3.0_4b182fe8ebf5ef04e4e83ea4fbf0029c
       '@rollup/plugin-node-resolve': 9.0.0_rollup@2.43.0
       '@types/eslint': 7.2.7
@@ -23,6 +21,7 @@ importers:
       '@types/node': 14.14.37
       eslint: 7.23.0
       jest: 26.6.3
+      jest-standard-reporter: 2.0.0
       prettier: 2.2.1
       rollup: 2.43.0
       typescript: 4.2.3
@@ -31,8 +30,6 @@ importers:
       '@babel/eslint-parser': ^7.12.1
       '@babel/preset-env': ^7.12.1
       '@babel/preset-typescript': ^7.12.1
-      '@kocal/eslint-config-generator-plugin-typescript': workspace:*
-      '@kocal/eslint-config-generator-plugin-vue': workspace:*
       '@rollup/plugin-babel': ^5.2.1
       '@rollup/plugin-node-resolve': ^9.0.0
       '@types/eslint': ^7.2.4
@@ -46,6 +43,7 @@ importers:
       eslint-plugin-import: ^2.22.1
       eslint-plugin-prettier: ^3.1.4
       jest: ^26.6.0
+      jest-standard-reporter: ^2.0.0
       prettier: ^2.1.2
       rollup: ^2.32.0
       typescript: ^4.0.3
@@ -58,12 +56,14 @@ importers:
       '@babel/eslint-parser': 7.13.10_63214fcdaae50def4bee3e0a6e6337c2
       '@babel/preset-env': 7.13.12_@babel+core@7.13.13
       '@babel/preset-typescript': 7.13.0_@babel+core@7.13.13
+      '@kocal/eslint-config-generator': link:../eslint-config-generator
       '@rollup/plugin-babel': 5.3.0_4b182fe8ebf5ef04e4e83ea4fbf0029c
       '@rollup/plugin-node-resolve': 9.0.0_rollup@2.43.0
       '@types/eslint': 7.2.7
       '@types/jest': 26.0.22
       eslint: 7.23.0
       jest: 26.6.3
+      jest-standard-reporter: 2.0.0
       prettier: 2.2.1
       rollup: 2.43.0
       typescript: 4.2.3
@@ -72,6 +72,7 @@ importers:
       '@babel/eslint-parser': ^7.12.1
       '@babel/preset-env': ^7.12.1
       '@babel/preset-typescript': ^7.12.1
+      '@kocal/eslint-config-generator': workspace:*
       '@rollup/plugin-babel': ^5.2.1
       '@rollup/plugin-node-resolve': ^9.0.0
       '@types/eslint': ^7.2.4
@@ -80,6 +81,7 @@ importers:
       '@typescript-eslint/parser': ^4.5.0
       eslint: ^7.11.0
       jest: ^26.6.0
+      jest-standard-reporter: ^2.0.0
       prettier: ^2.1.2
       rollup: ^2.32.0
       typescript: ^4.0.3
@@ -91,12 +93,15 @@ importers:
       '@babel/eslint-parser': 7.13.10_63214fcdaae50def4bee3e0a6e6337c2
       '@babel/preset-env': 7.13.12_@babel+core@7.13.13
       '@babel/preset-typescript': 7.13.0_@babel+core@7.13.13
+      '@kocal/eslint-config-generator': link:../eslint-config-generator
+      '@kocal/eslint-config-generator-plugin-typescript': link:../plugin-typescript
       '@rollup/plugin-babel': 5.3.0_4b182fe8ebf5ef04e4e83ea4fbf0029c
       '@rollup/plugin-node-resolve': 9.0.0_rollup@2.43.0
       '@types/eslint': 7.2.7
       '@types/jest': 26.0.22
       eslint: 7.23.0
       jest: 26.6.3
+      jest-standard-reporter: 2.0.0
       prettier: 2.2.1
       rollup: 2.43.0
       typescript: 4.2.3
@@ -108,6 +113,8 @@ importers:
       '@babel/eslint-parser': ^7.12.1
       '@babel/preset-env': ^7.12.1
       '@babel/preset-typescript': ^7.12.1
+      '@kocal/eslint-config-generator': workspace:*
+      '@kocal/eslint-config-generator-plugin-typescript': workspace:*
       '@rollup/plugin-babel': ^5.2.1
       '@rollup/plugin-node-resolve': ^9.0.0
       '@types/eslint': ^7.2.4
@@ -115,6 +122,7 @@ importers:
       eslint: ^7.11.0
       eslint-plugin-vue: ^7.1.0
       jest: ^26.6.0
+      jest-standard-reporter: ^2.0.0
       prettier: ^2.1.2
       rollup: ^2.32.0
       typescript: ^4.0.3
@@ -3600,7 +3608,6 @@ packages:
     resolution:
       integrity: sha1-Sb1jMdfQLQwJvJEKEHW6gWW1bfk=
   /inherits/2.0.1:
-    dev: false
     resolution:
       integrity: sha1-sX0I0ya0Qj5Wjv9xn5GwscvfafE=
   /inherits/2.0.3:
@@ -4278,6 +4285,17 @@ packages:
       node: '>= 10.14.2'
     resolution:
       integrity: sha512-OLhxz05EzUtsAmOMzuupt1lHYXCNib0ECyuZ/PZOx9TrZcC8vL0x+DUG3TL+GLX3yHG45e6YGjIm0XwDc3q3og==
+  /jest-standard-reporter/2.0.0:
+    dependencies:
+      '@jest/console': 26.6.2
+      chalk: 4.1.0
+      jest-util: 26.6.2
+      path: 0.12.7
+      slash: 3.0.0
+      string-length: 4.0.2
+    dev: true
+    resolution:
+      integrity: sha512-JhV3qzNzs5u/T1mzN9ivVrf2i4xYOQJgyPMKQbAmwRAZIprCpkikt8GF1kQKrP5ch1qBMn5xYyNdUUOKi8bltA==
   /jest-util/26.6.2:
     dependencies:
       '@jest/types': 26.6.2
@@ -5097,6 +5115,13 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+  /path/0.12.7:
+    dependencies:
+      process: 0.11.10
+      util: 0.10.3
+    dev: true
+    resolution:
+      integrity: sha1-1NwqUGxM4hl+tIHr/NWzbAFAsQ8=
   /pbkdf2/3.1.1:
     dependencies:
       create-hash: 1.2.0
@@ -5197,7 +5222,6 @@ packages:
     resolution:
       integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
   /process/0.11.10:
-    dev: false
     engines:
       node: '>= 0.6.0'
     resolution:
@@ -6312,7 +6336,6 @@ packages:
   /util/0.10.3:
     dependencies:
       inherits: 2.0.1
-    dev: false
     resolution:
       integrity: sha1-evsa/lCAUkZInj23/g7TeTNqwPk=
   /util/0.11.1:
