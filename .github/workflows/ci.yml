@@ -42,14 +42,11 @@ jobs:
                 with:
                     fetch-depth: '100'
 
-            -   name: 'Rush: Checking for missing change logs...'
-                run: node common/scripts/install-run-rush.js change -v
-
             -   name: 'Rush: Installing...'
                 run: node common/scripts/install-run-rush.js install
 
             -   name: 'Rush: Building...'
                 run: node common/scripts/install-run-rush.js rebuild --verbose
 
-            -   name: 'Rush: Building...'
+            -   name: 'Rush: Linting...'
                 run: node common/scripts/install-run-rush.js lint --verbose

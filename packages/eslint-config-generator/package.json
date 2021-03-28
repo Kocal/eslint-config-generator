@@ -1,7 +1,6 @@
 {
   "name": "@kocal/eslint-config-generator",
   "description": "An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, TypeScript and Prettier support.",
-  "version": "0.0.0-development",
   "publishConfig": {
     "access": "public"
   },

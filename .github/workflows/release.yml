@@ -12,16 +12,26 @@ jobs:
     release:
         runs-on: ubuntu-latest
         steps:
+            -   run: 'git config --local user.email hugo@alliau.me'
+            -   run: 'git config --local user.name Hugo Alliaume'
+
             -   uses: actions/checkout@v2
+                with:
+                    fetch-depth: '100'
 
-            -   name: Install Node.js
-                uses: actions/setup-node@v2
+            -   name: 'Rush: Verify Change Logs...'
+                run: node common/scripts/install-run-rush.js change --verify
 
-            -   run: yarn install --frozen-lockfile
+            -   name: 'Rush: Installing...'
+                run: node common/scripts/install-run-rush.js install
 
-            -   run: yarn build
+            -   name: 'Rush: Building...'
+                run: node common/scripts/install-run-rush.js rebuild --verbose
 
-            -   run: yarn semantic-release
+            -   name: 'Rush: Version...'
+                run: node common/scripts/install-run-rush.js version --bump --version-policy eslint-config-generator --target-branch main
+
+            -   name: 'Rush: Publish...'
+                run: node common/scripts/install-run-rush.js publish --apply --publish --include-all --target-branch main --add-commit-details --set-access-level public
                 env:
                     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
