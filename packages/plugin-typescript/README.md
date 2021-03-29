@@ -1,5 +1,7 @@
 # ESLint config generator (plugin TypeScript)
 
+[![](https://img.shields.io/npm/v/@kocal/eslint-config-generator-plugin-typescript)](https://npmjs.org/package/@kocal/eslint-config-generator-plugin-typescript)
+
 ## Installation
 
 Install the plugin:

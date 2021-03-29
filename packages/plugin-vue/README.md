@@ -1,5 +1,7 @@
 # ESLint config generator (plugin Vue)
 
+[![](https://img.shields.io/npm/v/@kocal/eslint-config-generator-plugin-vue)](https://npmjs.org/package/@kocal/eslint-config-generator-plugin-vue)
+
 ## Installation
 
 Install the plugin:

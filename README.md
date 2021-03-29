@@ -1,40 +1,35 @@
 # ESLint config generator
 
-![Test](https://github.com/kocal/eslint-config-generator/workflows/CI/badge.svg)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/kocal/eslint-config-generator)
+![GitHub Actions: CI](https://github.com/kocal/eslint-config-generator/workflows/CI/badge.svg)
+![GitHub Actions: Release](https://github.com/kocal/eslint-config-generator/workflows/Release/badge.svg)
 
 An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, TypeScript and Prettier support.
+
+| Package                                                                          | Version                                                                                                                                                          |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [@kocal/eslint-config-generator](./packages/eslint-config-generator)             | [![](https://img.shields.io/npm/v/@kocal/eslint-config-generator)](https://npmjs.org/package/@kocal/eslint-config-generator)                                     |
+| [@kocal/eslint-config-generator-common](./packages/common)                       | [![](https://img.shields.io/npm/v/@kocal/eslint-config-generator-common)](https://npmjs.org/package/@kocal/eslint-config-generator-common)                       |
+| [@kocal/eslint-config-generator-plugin-typescript](./packages/plugin-typescript) | [![](https://img.shields.io/npm/v/@kocal/eslint-config-generator-plugin-typescript)](https://npmjs.org/package/@kocal/eslint-config-generator-plugin-typescript) |
+| [@kocal/eslint-config-generator-plugin-vue](./packages/plugin-vue)               | [![](https://img.shields.io/npm/v/@kocal/eslint-config-generator-plugin-vue)](https://npmjs.org/package/@kocal/eslint-config-generator-plugin-vue)               |
 
 ## Features
 
 - Use [eslint-config-airbnb-base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
 - Use Prettier with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) and [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
-- Support Vue, with [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) with some opinionated rules
-- Support TypeScript, with [@typescript-eslint/plugin-eslint](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/) with some opinionated rules
+- Support Vue, with [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) and some opinionated rules
+- Support TypeScript, with [@typescript-eslint/plugin-eslint](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/) and some opinionated rules
 
-## Installation
+## Installation and usage
 
-```bash
-$ yarn add --dev @kocal/eslint-config-generator eslint@^7.0.0 @babel/eslint-parser@^7.0.0 prettier@^2.0.0
-```
+Please read [the documentation](./packages/eslint-config-generator) to get started.
 
-## Usage
+### Vue support
 
-In your `.eslintrc.js`:
+Read [Vue plugin's documentation](./packages/plugin-vue/README.md).
 
-```js
-const { generateConfig } = require('@kocal/eslint-config-generator');
+### TypeScript support
 
-module.exports = generateConfig();
-```
-
-### Vue 
-
-Read [Vue plugin's README](./packages/plugin-vue/README.md).
-
-### TypeScript
-
-Read [TypeScript plugin's README](./packages/plugin-typescript/README.md).
+Read [TypeScript plugin's documentation](./packages/plugin-typescript/README.md).
 
 ---
 
@@ -43,6 +38,7 @@ Read [TypeScript plugin's README](./packages/plugin-typescript/README.md).
 You need to install [Rush.js](https://rushjs.io/pages/intro/get_started/) first.
 
 Then run:
+
 ```shell
 $ rush install
 $ rush build -v
