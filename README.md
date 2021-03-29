@@ -77,16 +77,32 @@ generateConfig({
 
 ## How to contribute
 
-You need to install some dependencies first:
-```bash
-$ yarn
+You need to install [Rush.js](https://rushjs.io/pages/intro/get_started/) first.
+
+Then run:
+```shell
+$ rush install
+$ rush build -v
+```
+
+### Testing
+
+```shell
+$ rush test -v
+```
+
+### Linting
+
+```shell
+$ rush lint
+$ rush lint:fix
 ```
 
 ### Contribution
 
 - Make a pull request, its title should follows [Angular commit message convention](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-format)
-- You should **Squash and Merge** your pull request
+- Rush `rush change` to describe your changes (they will be used to generate the CHANGELOG)
 
 ### Publishing a new release
 
-This is automatically done by GitHub Actions and [semantic-release](https://github.com/semantic-release/semantic-release) when you merge a pull request.
+This is automatically done by GitHub Actions and Rush when a pull request is merged.
