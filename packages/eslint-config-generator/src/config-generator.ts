@@ -1,7 +1,11 @@
-import { ESLintConfig } from './config';
-import { normalizeUserOptions, Options, UserOptions } from './options';
+import {
+  ESLintConfig,
+  normalizeUserOptions,
+  Options,
+  PluginCallback,
+  UserOptions,
+} from '@kocal/eslint-config-generator-common';
 import { isPackageInstalled } from './package-helper';
-import { PluginCallback } from './plugin';
 
 function getBaseConfig(options: Options): ESLintConfig {
   return {

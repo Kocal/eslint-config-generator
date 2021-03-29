@@ -454,6 +454,13 @@
        "packageName": "@kocal/eslint-config-generator-plugin-typescript",
        "projectFolder": "packages/plugin-typescript",
        "reviewCategory": "tools",
+       "shouldPublish": true
+     },
+
+     {
+       "packageName": "@kocal/eslint-config-generator-common",
+       "projectFolder": "packages/common",
+       "reviewCategory": "tools",
        "shouldPublish": true,
      }
   ]

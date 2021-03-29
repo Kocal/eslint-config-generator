@@ -30,6 +30,12 @@ module.exports = generateConfig();
 
 ### Vue 
 
+Install the plugin:
+```shell
+$ yarn add --dev @kocal/eslint-config-generator-plugin-vue
+```
+
+Then configure options:
 ```js
 // enable Vue support
 generateConfig({
@@ -47,6 +53,12 @@ generateConfig({
 
 ### TypeScript
 
+Install the plugin:
+```shell
+$ yarn add --dev @kocal/eslint-config-generator-plugin-typescript
+```
+
+Then configure options:
 ```js
 // enable TypeScript support
 generateConfig({

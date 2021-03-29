@@ -1,6 +1,4 @@
-/* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["config"] }] */
-
-import { createPlugin, ESLintConfig, Options } from '@kocal/eslint-config-generator';
+import { createPlugin, ESLintConfig, Options } from '@kocal/eslint-config-generator-common';
 
 export default createPlugin(
   ({ config, options }: { config: ESLintConfig; options: Options }): ESLintConfig => {
