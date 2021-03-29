@@ -12,12 +12,12 @@ jobs:
     release:
         runs-on: ubuntu-latest
         steps:
-            -   run: 'git config --local user.email hugo@alliau.me'
-            -   run: 'git config --local user.name Hugo Alliaume'
-
             -   uses: actions/checkout@v2
                 with:
                     fetch-depth: '100'
+
+            -   run: 'git config --local user.email hugo@alliau.me'
+            -   run: 'git config --local user.name Hugo Alliaume'
 
             -   name: 'Rush: Verify Change Logs...'
                 run: node common/scripts/install-run-rush.js change --verify
