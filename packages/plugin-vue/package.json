@@ -39,7 +39,6 @@
     "eslint-plugin-vue": "^7.1.0"
   },
   "peerDependencies": {
-    "@kocal/eslint-config-generator": "workspace:*",
     "eslint": "^7.0.0"
   },
   "devDependencies": {
