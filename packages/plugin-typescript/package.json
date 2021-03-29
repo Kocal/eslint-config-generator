@@ -1,7 +1,7 @@
 {
   "name": "@kocal/eslint-config-generator-plugin-typescript",
   "description": "Add TypeScript support to @kocal/eslint-config-generator.",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "publishConfig": {
     "access": "public"
   },
