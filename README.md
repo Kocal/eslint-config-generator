@@ -34,7 +34,7 @@ Read [Vue plugin's README](./packages/plugin-vue/README.md).
 
 ### TypeScript
 
-Read [TypeScript plugin's README](./packages/plugin-vue/README.md).
+Read [TypeScript plugin's README](./packages/plugin-typescript/README.md).
 
 ---
 
