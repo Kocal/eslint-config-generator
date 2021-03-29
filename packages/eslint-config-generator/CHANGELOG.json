@@ -2,6 +2,29 @@
   "name": "@kocal/eslint-config-generator",
   "entries": [
     {
+      "version": "2.0.2",
+      "tag": "@kocal/eslint-config-generator_v2.0.2",
+      "date": "Mon, 29 Mar 2021 20:40:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add a README.md"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-common\" to `2.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-typescript\" to `2.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-vue\" to `2.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.1",
       "tag": "@kocal/eslint-config-generator_v2.0.1",
       "date": "Mon, 29 Mar 2021 20:16:20 GMT",

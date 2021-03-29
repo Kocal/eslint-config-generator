@@ -2,6 +2,18 @@
   "name": "@kocal/eslint-config-generator-common",
   "entries": [
     {
+      "version": "2.0.2",
+      "tag": "@kocal/eslint-config-generator-common_v2.0.2",
+      "date": "Mon, 29 Mar 2021 20:40:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update README.md"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.1",
       "tag": "@kocal/eslint-config-generator-common_v2.0.1",
       "date": "Mon, 29 Mar 2021 20:16:20 GMT",
