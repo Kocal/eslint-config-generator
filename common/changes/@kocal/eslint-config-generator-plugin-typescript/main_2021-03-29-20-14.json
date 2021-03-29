@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-plugin-typescript",
+      "comment": "Add README.md",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-plugin-typescript",
+  "email": "hugo@alliau.me"
+}

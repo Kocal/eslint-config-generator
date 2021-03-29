@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-plugin-vue",
+      "comment": "Add README.md",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-plugin-vue",
+  "email": "hugo@alliau.me"
+}

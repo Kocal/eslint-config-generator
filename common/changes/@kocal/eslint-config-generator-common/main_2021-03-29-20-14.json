@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-common",
+      "comment": "Add README.md",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-common",
+  "email": "hugo@alliau.me"
+}
