@@ -1,5 +1,9 @@
-const { generateConfig } = require('./dist'); // eslint-disable-line @typescript-eslint/no-var-requires
+const { generateConfig } = require('./packages/eslint-config-generator/dist'); // eslint-disable-line @typescript-eslint/no-var-requires
 
-module.exports = generateConfig({
+const config = generateConfig({
   typescript: true,
 });
+
+config.rules['no-param-reassign'][1].ignorePropertyModificationsFor.push('config'); // the ESLintConfig we "mutate"
+
+module.exports = config;

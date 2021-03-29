@@ -1,5 +1,5 @@
-import { generateConfig, UserOptions } from '../dist';
-import { ESLintConfig } from './config-generator';
+import { ESLintConfig, UserOptions } from '@kocal/eslint-config-generator-common';
+import { generateConfig } from '../dist';
 
 describe('Configuration generator', function () {
   it('should generate the default configuration', function () {
@@ -74,60 +74,7 @@ describe('Configuration generator', function () {
     });
   });
 
-  describe('Vue', () => {
-    it('should generate a configuration with Vue support', function () {
-      const userOptions: UserOptions = {
-        vue: true,
-      };
-
-      const config = generateConfig(userOptions);
-
-      expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base', 'prettier', 'prettier/vue']);
-      expect(config.parser).toEqual('vue-eslint-parser');
-      expect(config.rules).toMatchObject({
-        'vue/component-name-in-template-casing': [
-          `error`,
-          `PascalCase`,
-          {
-            registeredComponentsOnly: false,
-          },
-        ],
-        'vue/html-self-closing': ['error', { html: { void: 'always' } }],
-        'vue/no-duplicate-attr-inheritance': ['error'],
-        'vue/no-empty-component-block': ['error'],
-        'vue/no-template-target-blank': ['error'],
-        'vue/padding-line-between-blocks': ['error'],
-        'vue/v-on-function-call': ['error'],
-        'vue/no-boolean-default': ['error'],
-      });
-    });
-
-    it('should generate a configuration with Vue 3 support', function () {
-      const userOptions: UserOptions = {
-        vue: {
-          version: 3,
-        },
-      };
-
-      const config: ESLintConfig = generateConfig(userOptions);
-
-      expect(config.extends).toEqual(['plugin:vue/vue3-recommended', 'airbnb-base', 'prettier', 'prettier/vue']);
-    });
-
-    it('should generate a configuration with Vue support and preset "config"', function () {
-      const userOptions: UserOptions = {
-        vue: {
-          config: 'essential',
-        },
-      };
-
-      const config = generateConfig(userOptions);
-
-      expect(config.extends).toEqual(['plugin:vue/essential', 'airbnb-base', 'prettier', 'prettier/vue']);
-    });
-  });
-
-  describe('TypeScript', function () {
+  describe('plugin: typescript', function () {
     it('should generate a configuration with TypeScript support', function () {
       const userOptions: UserOptions = {
         typescript: true,
@@ -178,6 +125,59 @@ describe('Configuration generator', function () {
           },
         },
       ]);
+    });
+  });
+
+  describe('plugin: vue', function () {
+    it('should generate a configuration with Vue support', function () {
+      const userOptions: UserOptions = {
+        vue: true,
+      };
+
+      const config = generateConfig(userOptions);
+
+      expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base', 'prettier', 'prettier/vue']);
+      expect(config.parser).toEqual('vue-eslint-parser');
+      expect(config.rules).toMatchObject({
+        'vue/component-name-in-template-casing': [
+          `error`,
+          `PascalCase`,
+          {
+            registeredComponentsOnly: false,
+          },
+        ],
+        'vue/html-self-closing': ['error', { html: { void: 'always' } }],
+        'vue/no-duplicate-attr-inheritance': ['error'],
+        'vue/no-empty-component-block': ['error'],
+        'vue/no-template-target-blank': ['error'],
+        'vue/padding-line-between-blocks': ['error'],
+        'vue/v-on-function-call': ['error'],
+        'vue/no-boolean-default': ['error'],
+      });
+    });
+
+    it('should generate a configuration with Vue 3 support', function () {
+      const userOptions: UserOptions = {
+        vue: {
+          version: 3,
+        },
+      };
+
+      const config: ESLintConfig = generateConfig(userOptions);
+
+      expect(config.extends).toEqual(['plugin:vue/vue3-recommended', 'airbnb-base', 'prettier', 'prettier/vue']);
+    });
+
+    it('should generate a configuration with Vue support and preset "config"', function () {
+      const userOptions: UserOptions = {
+        vue: {
+          config: 'essential',
+        },
+      };
+
+      const config = generateConfig(userOptions);
+
+      expect(config.extends).toEqual(['plugin:vue/essential', 'airbnb-base', 'prettier', 'prettier/vue']);
     });
 
     it('should generate a configuration with TypeScript and Vue support, and automatically handle .vue files', function () {

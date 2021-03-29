@@ -12,17 +12,6 @@ function createESLint(options: ESLint.Options): ESLint {
   });
 }
 
-function cleanResults(results: ESLint.LintResult[]) {
-  return results.map((result) => {
-    return {
-      ...result,
-      messages: result.messages.map(({ line, column, ruleId, message }) => {
-        return { line, column, ruleId, message };
-      }),
-    };
-  });
-}
-
 async function lintCode(
   code: string,
   options?: { filePath?: string; warnIgnored?: boolean }
@@ -44,6 +33,17 @@ async function lintTypeScriptJSXDefinitionCode(code: string): Promise<ESLint.Lin
 
 async function lintVueCode(code: string): Promise<ESLint.LintResult[]> {
   return lintCode(code, { filePath: 'file.vue' });
+}
+
+function cleanResults(results: ESLint.LintResult[]) {
+  return results.map((result) => {
+    return {
+      ...result,
+      messages: result.messages.map(({ line, column, ruleId, message }) => {
+        return { line, column, ruleId, message };
+      }),
+    };
+  });
 }
 
 describe('Functional', function () {
@@ -78,149 +78,21 @@ describe('Functional', function () {
     `);
   });
 
-  it('should lint Vue code', async function () {
-    eslint = createESLint({
-      baseConfig: generateConfig({
-        vue: true,
-      }),
-    });
+  describe('plugin: typescript', function () {
+    it('should lint TypeScript code', async function () {
+      eslint = createESLint({
+        baseConfig: generateConfig({
+          typescript: true,
+        }),
+      });
 
-    const results = cleanResults(await eslint.lintFiles('component.vue'));
-
-    expect(results[0].messages).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "column": 5,
-          "line": 4,
-          "message": "Component name \\"transition\\" is not PascalCase.",
-          "ruleId": "vue/component-name-in-template-casing",
-        },
-        Object {
-          "column": 29,
-          "line": 15,
-          "message": "Delete \`·\`",
-          "ruleId": "prettier/prettier",
-        },
-        Object {
-          "column": 5,
-          "line": 20,
-          "message": "Component name \\"v-component\\" is not PascalCase.",
-          "ruleId": "vue/component-name-in-template-casing",
-        },
-        Object {
-          "column": 5,
-          "line": 32,
-          "message": "Unexpected console statement.",
-          "ruleId": "no-console",
-        },
-        Object {
-          "column": 17,
-          "line": 32,
-          "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
-          "ruleId": "prettier/prettier",
-        },
-      ]
-    `);
-  });
-
-  it('should lint Vue code with TypeScript support on .vue files', async function () {
-    eslint = createESLint({
-      baseConfig: generateConfig({
-        vue: true,
-        typescript: {
-          vueComponents: true,
-        },
-      }),
-    });
-
-    const results = cleanResults(await eslint.lintFiles('component-typescript.vue'));
-
-    expect(results[0].messages).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "column": 5,
-          "line": 4,
-          "message": "Component name \\"transition\\" is not PascalCase.",
-          "ruleId": "vue/component-name-in-template-casing",
-        },
-        Object {
-          "column": 29,
-          "line": 5,
-          "message": "Replace \`⏎········my·image:·<img·src=\\"https://example.com/image.png\\"·/>⏎······\` with \`my·image:·<img·src=\\"https://example.com/image.png\\"·/>\`",
-          "ruleId": "prettier/prettier",
-        },
-        Object {
-          "column": 28,
-          "line": 13,
-          "message": "Delete \`·\`",
-          "ruleId": "prettier/prettier",
-        },
-        Object {
-          "column": 5,
-          "line": 18,
-          "message": "Component name \\"v-component\\" is not PascalCase.",
-          "ruleId": "vue/component-name-in-template-casing",
-        },
-        Object {
-          "column": 3,
-          "line": 27,
-          "message": "Type boolean trivially inferred from a boolean literal, remove type annotation.",
-          "ruleId": "@typescript-eslint/no-inferrable-types",
-        },
-        Object {
-          "column": 3,
-          "line": 29,
-          "message": "Missing return type on function.",
-          "ruleId": "@typescript-eslint/explicit-module-boundary-types",
-        },
-        Object {
-          "column": 10,
-          "line": 29,
-          "message": "Expected 'this' to be used by class method 'mounted'.",
-          "ruleId": "class-methods-use-this",
-        },
-        Object {
-          "column": 5,
-          "line": 30,
-          "message": "Unexpected console statement.",
-          "ruleId": "no-console",
-        },
-        Object {
-          "column": 17,
-          "line": 30,
-          "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
-          "ruleId": "prettier/prettier",
-        },
-        Object {
-          "column": 12,
-          "line": 34,
-          "message": "Expected 'this' to be used by class method 'onVisible'.",
-          "ruleId": "class-methods-use-this",
-        },
-        Object {
-          "column": 5,
-          "line": 35,
-          "message": "Unexpected console statement.",
-          "ruleId": "no-console",
-        },
-      ]
-    `);
-  });
-
-  it('should lint TypeScript code', async function () {
-    eslint = createESLint({
-      baseConfig: generateConfig({
-        typescript: true,
-      }),
-    });
-
-    const results = await lintTypeScriptCode(
-      `const str: any = 'foo';
+      const results = await lintTypeScriptCode(
+        `const str: any = 'foo';
 console.log(str)
 `
-    );
+      );
 
-    expect(results[0].messages).toMatchInlineSnapshot(`
+      expect(results[0].messages).toMatchInlineSnapshot(`
       Array [
         Object {
           "column": 12,
@@ -305,16 +177,16 @@ console.log(str)
         },
       ]
     `);
-  });
-
-  it('should lint TypeScript code and valide namings case', async function () {
-    eslint = createESLint({
-      baseConfig: generateConfig({
-        typescript: true,
-      }),
     });
 
-    const results = await lintTypeScriptDefinitionCode(`declare namespace NodeJS {
+    it('should lint TypeScript code and valide namings case', async function () {
+      eslint = createESLint({
+        baseConfig: generateConfig({
+          typescript: true,
+        }),
+      });
+
+      const results = await lintTypeScriptDefinitionCode(`declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: 'development' | 'production';
   }
@@ -325,22 +197,22 @@ console.log(str)
 }
 `);
 
-    expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
-  });
-
-  it('should lint TSX code ', async function () {
-    eslint = createESLint({
-      baseConfig: generateConfig({
-        typescript: true,
-      }),
+      expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
     });
 
-    const results = await lintTypeScriptJSXDefinitionCode(`function HelloWorld() {
+    it('should lint TSX code ', async function () {
+      eslint = createESLint({
+        baseConfig: generateConfig({
+          typescript: true,
+        }),
+      });
+
+      const results = await lintTypeScriptJSXDefinitionCode(`function HelloWorld() {
   return <div>Hello world!</div>;
 }
 `);
 
-    expect(results[0].messages).toMatchInlineSnapshot(`
+      expect(results[0].messages).toMatchInlineSnapshot(`
       Array [
         Object {
           "column": 10,
@@ -355,9 +227,141 @@ console.log(str)
         },
       ]
     `);
+    });
   });
 
-  describe('Rule', function () {
+  describe('plugin: vue', () => {
+    it('should lint Vue code', async function () {
+      eslint = createESLint({
+        baseConfig: generateConfig({
+          vue: true,
+        }),
+      });
+
+      const results = cleanResults(await eslint.lintFiles('component.vue'));
+
+      expect(results[0].messages).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "column": 5,
+          "line": 4,
+          "message": "Component name \\"transition\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 29,
+          "line": 15,
+          "message": "Delete \`·\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 5,
+          "line": 20,
+          "message": "Component name \\"v-component\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 5,
+          "line": 32,
+          "message": "Unexpected console statement.",
+          "ruleId": "no-console",
+        },
+        Object {
+          "column": 17,
+          "line": 32,
+          "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
+          "ruleId": "prettier/prettier",
+        },
+      ]
+    `);
+    });
+
+    it('should lint Vue code with TypeScript support on .vue files', async function () {
+      eslint = createESLint({
+        baseConfig: generateConfig({
+          vue: true,
+          typescript: {
+            vueComponents: true,
+          },
+        }),
+      });
+
+      const results = cleanResults(await eslint.lintFiles('component-typescript.vue'));
+
+      expect(results[0].messages).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "column": 5,
+          "line": 4,
+          "message": "Component name \\"transition\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 29,
+          "line": 5,
+          "message": "Replace \`⏎········my·image:·<img·src=\\"https://example.com/image.png\\"·/>⏎······\` with \`my·image:·<img·src=\\"https://example.com/image.png\\"·/>\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 28,
+          "line": 13,
+          "message": "Delete \`·\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 5,
+          "line": 18,
+          "message": "Component name \\"v-component\\" is not PascalCase.",
+          "ruleId": "vue/component-name-in-template-casing",
+        },
+        Object {
+          "column": 3,
+          "line": 27,
+          "message": "Type boolean trivially inferred from a boolean literal, remove type annotation.",
+          "ruleId": "@typescript-eslint/no-inferrable-types",
+        },
+        Object {
+          "column": 3,
+          "line": 29,
+          "message": "Missing return type on function.",
+          "ruleId": "@typescript-eslint/explicit-module-boundary-types",
+        },
+        Object {
+          "column": 10,
+          "line": 29,
+          "message": "Expected 'this' to be used by class method 'mounted'.",
+          "ruleId": "class-methods-use-this",
+        },
+        Object {
+          "column": 5,
+          "line": 30,
+          "message": "Unexpected console statement.",
+          "ruleId": "no-console",
+        },
+        Object {
+          "column": 17,
+          "line": 30,
+          "message": "Replace \`\\"Hello·world!\\"\` with \`'Hello·world!'\`",
+          "ruleId": "prettier/prettier",
+        },
+        Object {
+          "column": 12,
+          "line": 34,
+          "message": "Expected 'this' to be used by class method 'onVisible'.",
+          "ruleId": "class-methods-use-this",
+        },
+        Object {
+          "column": 5,
+          "line": 35,
+          "message": "Unexpected console statement.",
+          "ruleId": "no-console",
+        },
+      ]
+    `);
+    });
+  });
+
+  describe('Specific rules', function () {
     describe('vue/no-bare-strings-in-template', function () {
       it('should fail', async function () {
         eslint = createESLint({

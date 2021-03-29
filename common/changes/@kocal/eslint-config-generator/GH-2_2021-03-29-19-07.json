@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator",
+      "comment": "Support of TypeScript and Vue specific configurations have been removed in favor of two new plugins.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator",
+  "email": "hugo@alliau.me"
+}

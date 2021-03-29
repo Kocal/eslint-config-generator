@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-plugin-vue",
+      "comment": "Create the plugin which add Vue support.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-plugin-vue",
+  "email": "hugo@alliau.me"
+}
