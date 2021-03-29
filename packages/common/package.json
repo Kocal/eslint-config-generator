@@ -1,6 +1,7 @@
 {
   "name": "@kocal/eslint-config-generator-common",
   "description": "Common things for @kocal/eslint-config-generator and plugins.",
+  "version": "1.2.1",
   "publishConfig": {
     "access": "public"
   },

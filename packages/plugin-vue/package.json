@@ -1,6 +1,7 @@
 {
   "name": "@kocal/eslint-config-generator-plugin-vue",
   "description": "Add Vue support to @kocal/eslint-config-generator.",
+  "version": "1.2.1",
   "publishConfig": {
     "access": "public"
   },
