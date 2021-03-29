@@ -30,48 +30,11 @@ module.exports = generateConfig();
 
 ### Vue 
 
-Install the plugin:
-```shell
-$ yarn add --dev @kocal/eslint-config-generator-plugin-vue
-```
-
-Then configure options:
-```js
-// enable Vue support
-generateConfig({
-  vue: true
-});
-
-// enable and configure Vue support
-generateConfig({
-  vue: {
-    version: 3, // default: 2
-    config: 'recommended', // default: 'recommended', available values: 'essential', 'recommended', 'strongly-recommended'
-  }
-});
-```
+Read [Vue plugin's README](./packages/plugin-vue/README.md).
 
 ### TypeScript
 
-Install the plugin:
-```shell
-$ yarn add --dev @kocal/eslint-config-generator-plugin-typescript
-```
-
-Then configure options:
-```js
-// enable TypeScript support
-generateConfig({
-  typescript: true
-});
-
-// enable and configure TypeScript support
-generateConfig({
-  typescript: {
-    vueComponents: true, // allow to lint .vue files, enabled by default if Vue support is enabled 
-  }
-});
-```
+Read [TypeScript plugin's README](./packages/plugin-vue/README.md).
 
 ---
 
