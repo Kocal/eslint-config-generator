@@ -1,0 +1,25 @@
+{
+  "name": "@kocal/eslint-config-generator-plugin-vue",
+  "entries": [
+    {
+      "version": "2.0.0",
+      "tag": "@kocal/eslint-config-generator-plugin-vue_v2.0.0",
+      "date": "Mon, 29 Mar 2021 19:38:14 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Create the plugin which add Vue support."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-common\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator\" to `2.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@kocal/eslint-config-generator",
+  "entries": [
+    {
+      "version": "2.0.0",
+      "tag": "@kocal/eslint-config-generator_v2.0.0",
+      "date": "Mon, 29 Mar 2021 19:38:14 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Support of TypeScript and Vue specific configurations have been removed in favor of two new plugins."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-common\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-typescript\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-vue\" to `2.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}
