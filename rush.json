@@ -392,12 +392,12 @@
        /**
         * The NPM package name of the project (must match package.json)
         */
-       "packageName": "@kocal/eslint-config-generator",
+       "packageName": "@kocal/eslint-config-generator-common",
 
        /**
         * The path to the project folder, relative to the rush.json config file.
         */
-       "projectFolder": "packages/eslint-config-generator",
+       "projectFolder": "packages/common",
 
        /**
         * An optional category for usage in the "browser-approved-packages.json"
@@ -443,6 +443,14 @@
        // "versionPolicyName": ""
      },
 
+
+     {
+       "packageName": "@kocal/eslint-config-generator",
+       "projectFolder": "packages/eslint-config-generator",
+       "reviewCategory": "tools",
+       "shouldPublish": true,
+     },
+
      {
        "packageName": "@kocal/eslint-config-generator-plugin-vue",
        "projectFolder": "packages/plugin-vue",
@@ -455,13 +463,6 @@
        "projectFolder": "packages/plugin-typescript",
        "reviewCategory": "tools",
        "shouldPublish": true
-     },
-
-     {
-       "packageName": "@kocal/eslint-config-generator-common",
-       "projectFolder": "packages/common",
-       "reviewCategory": "tools",
-       "shouldPublish": true,
      }
   ]
 }

@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@kocal/eslint-config-generator-common",
-      "comment": "",
-      "type": "none"
+      "comment": "Create the package.",
+      "type": "major"
     }
   ],
   "packageName": "@kocal/eslint-config-generator-common",
