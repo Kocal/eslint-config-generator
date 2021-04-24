@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator",
+      "comment": "",
+      "type": "none"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator",
+  "email": "hugo@alliau.me"
+}
