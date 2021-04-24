@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-plugin-typescript",
+      "comment": "Disable \"no-shadow\" rule.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-plugin-typescript",
+  "email": "hugo@alliau.me"
+}
