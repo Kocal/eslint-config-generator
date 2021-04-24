@@ -2,6 +2,18 @@
   "name": "@kocal/eslint-config-generator-plugin-typescript",
   "entries": [
     {
+      "version": "2.1.0",
+      "tag": "@kocal/eslint-config-generator-plugin-typescript_v2.1.0",
+      "date": "Sat, 24 Apr 2021 15:58:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Disable \"no-shadow\" rule."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.2",
       "tag": "@kocal/eslint-config-generator-plugin-typescript_v2.0.2",
       "date": "Mon, 29 Mar 2021 20:40:36 GMT",
