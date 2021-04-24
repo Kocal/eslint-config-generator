@@ -122,6 +122,7 @@ describe('Configuration generator', function () {
             'global-require': 'off',
             'no-use-before-define': 'off',
             'no-loop-func': 'off',
+            'no-shadow': 'off',
           },
         },
       ]);
@@ -217,6 +218,7 @@ describe('Configuration generator', function () {
             'no-use-before-define': 'off',
             'no-useless-constructor': 'off',
             'no-loop-func': 'off',
+            'no-shadow': 'off',
           },
         },
       ]);
@@ -250,6 +252,7 @@ describe('Configuration generator', function () {
             'no-use-before-define': 'off',
             'no-useless-constructor': 'off',
             'no-loop-func': 'off',
+            'no-shadow': 'off',
           },
         },
       ]);

@@ -53,6 +53,7 @@ export default createPlugin(
           'no-use-before-define': 'off',
           'no-useless-constructor': 'off',
           'no-loop-func': 'off',
+          'no-shadow': 'off',
         },
       }
     );
