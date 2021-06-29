@@ -2,6 +2,18 @@
   "name": "@kocal/eslint-config-generator",
   "entries": [
     {
+      "version": "2.0.4",
+      "tag": "@kocal/eslint-config-generator_v2.0.4",
+      "date": "Tue, 29 Jun 2021 19:26:31 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-vue\" to `2.0.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.3",
       "tag": "@kocal/eslint-config-generator_v2.0.3",
       "date": "Sat, 24 Apr 2021 15:58:33 GMT",

@@ -1,6 +1,11 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Sat, 24 Apr 2021 15:58:33 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jun 2021 19:26:31 GMT and should not be manually modified.
+
+## 2.0.4
+Tue, 29 Jun 2021 19:26:31 GMT
+
+_Version update only_
 
 ## 2.0.3
 Sat, 24 Apr 2021 15:58:33 GMT
