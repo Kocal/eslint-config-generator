@@ -9,6 +9,10 @@ export default createPlugin(
     const pluginVueConfig = `${options.vue.version === 3 ? 'vue3-' : ''}${options.vue.config}`;
 
     config.extends?.unshift(`plugin:vue/${pluginVueConfig}`);
+    config.parserOptions = {
+      ...config.parserOptions,
+      parser: config.parser,
+    };
     config.parser = 'vue-eslint-parser';
     config.rules = {
       ...(config.rules || {}),

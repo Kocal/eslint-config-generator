@@ -139,6 +139,7 @@ describe('Configuration generator', function () {
 
       expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base', 'prettier', 'prettier/vue']);
       expect(config.parser).toEqual('vue-eslint-parser');
+      expect(config.parserOptions.parser).toEqual('@babel/eslint-parser');
       expect(config.rules).toMatchObject({
         'vue/component-name-in-template-casing': [
           `error`,
