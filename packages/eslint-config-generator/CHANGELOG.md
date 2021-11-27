@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Tue, 29 Jun 2021 19:26:31 GMT and should not be manually modified.
+This log was last generated on Sat, 27 Nov 2021 00:41:43 GMT and should not be manually modified.
+
+## 2.1.0
+Sat, 27 Nov 2021 00:41:43 GMT
+
+### Minor changes
+
+- Allow more TypeScript files for import/no-extraneous-dependencies rule
 
 ## 2.0.4
 Tue, 29 Jun 2021 19:26:31 GMT
