@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator",
+      "comment": "Allow more TypeScript files for import/no-extraneous-dependencies rule",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator",
+  "email": "hugo@alliau.me"
+}
