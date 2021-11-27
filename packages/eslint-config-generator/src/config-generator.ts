@@ -67,23 +67,23 @@ function getBaseConfig(options: Options): ESLintConfig {
             '**/__tests__/**', // jest pattern
             '**/__mocks__/**', // jest pattern
             '**/cypress/**', // cypress pattern
-            'test.{js,jsx}', // repos with a single test file
-            'test-*.{js,jsx}', // repos with multiple top-level test files
-            '**/*{.,_}{test,spec}.{js,jsx}', // tests where the extension or filename suffix denotes that it is a test
-            '**/jest.config.js', // jest config
-            '**/jest.setup.js', // jest setup
-            '**/vue.config.js', // vue-cli config
-            '**/webpack.config.js', // webpack config
-            '**/webpack.config.*.js', // webpack config
-            '**/rollup.config.js', // rollup config
-            '**/rollup.config.*.js', // rollup config
-            '**/gulpfile.js', // gulp config
-            '**/gulpfile.*.js', // gulp config
-            '**/.eslintrc.js', // eslint config
-            '**/postcss.config.js', // postcss config
+            'test.{js,jsx,ts,tsx}', // repos with a single test file
+            'test-*.{js,jsx,ts,tsx}', // repos with multiple top-level test files
+            '**/*{.,_}{test,spec}.{js,jsx,ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
+            '**/jest.config.{js,ts}', // jest config
+            '**/jest.setup.{js,ts}', // jest setup
+            '**/vue.config.{js,ts}', // vue-cli config
+            '**/webpack.config.{js,ts}', // webpack config
+            '**/webpack.config.*.{js,ts}', // webpack config
+            '**/rollup.config.{js,ts}', // rollup config
+            '**/rollup.config.*.{js,ts}', // rollup config
+            '**/gulpfile.{js,ts}', // gulp config
+            '**/gulpfile.*.{js,ts}', // gulp config
+            '**/.eslintrc.{js,ts}', // eslint config
+            '**/postcss.config.{js,ts}', // postcss config
             '**/tailwind.config.{js,ts}', // tailwind config
             '**/vite.config.{js,ts}', // vite config
-            '**/prettier.config.js', // prettier config
+            '**/prettier.config.{js,ts}', // prettier config
           ],
           optionalDependencies: false,
         },
