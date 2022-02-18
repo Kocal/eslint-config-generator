@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator",
+      "comment": "Accept many config file type for prettier config. List of accepted files : .prettierrc.js, .prettierrc.cjs, prettier.config.js et prettier.config.cjs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator",
+  "email": ""
+}
