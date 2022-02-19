@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@kocal/eslint-config-generator",
-      "comment": "Accept many config file type for prettier config. List of accepted files : .prettierrc.js, .prettierrc.cjs, prettier.config.js et prettier.config.cjs",
+      "comment": "Fixed supported Prettier configuration files, .prettierrc.* files are now also supported.",
       "type": "patch"
     }
   ],
