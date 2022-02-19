@@ -24,7 +24,7 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "engines": {
-    "node": "^10.13.0 || ^12.13.0 || >=14.0.0"
+    "node": "^12.13.0 || >=14.0.0"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
