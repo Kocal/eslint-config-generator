@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-plugin-typescript",
+      "comment": "Drop Node.js 10, add Node.js 16",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-plugin-typescript",
+  "email": "hugo@alliau.me"
+}
