@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Sat, 27 Nov 2021 00:41:43 GMT and should not be manually modified.
+This log was last generated on Sat, 19 Feb 2022 09:36:14 GMT and should not be manually modified.
+
+## 2.2.0
+Sat, 19 Feb 2022 09:36:14 GMT
+
+### Minor changes
+
+- Drop Node.js 10, add Node.js 16
 
 ## 2.1.0
 Sat, 27 Nov 2021 00:41:43 GMT

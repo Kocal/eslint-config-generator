@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator-plugin-vue
 
-This log was last generated on Tue, 29 Jun 2021 19:26:31 GMT and should not be manually modified.
+This log was last generated on Sat, 19 Feb 2022 09:36:14 GMT and should not be manually modified.
+
+## 2.1.0
+Sat, 19 Feb 2022 09:36:14 GMT
+
+### Minor changes
+
+- Drop Node.js 10, add Node.js 16
 
 ## 2.0.3
 Tue, 29 Jun 2021 19:26:31 GMT

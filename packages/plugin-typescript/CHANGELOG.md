@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator-plugin-typescript
 
-This log was last generated on Sat, 24 Apr 2021 15:58:33 GMT and should not be manually modified.
+This log was last generated on Sat, 19 Feb 2022 09:36:14 GMT and should not be manually modified.
+
+## 2.2.0
+Sat, 19 Feb 2022 09:36:14 GMT
+
+### Minor changes
+
+- Drop Node.js 10, add Node.js 16
 
 ## 2.1.0
 Sat, 24 Apr 2021 15:58:33 GMT
