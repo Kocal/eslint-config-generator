@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Sat, 19 Feb 2022 09:36:14 GMT and should not be manually modified.
+This log was last generated on Sun, 20 Feb 2022 16:48:49 GMT and should not be manually modified.
+
+## 2.2.1
+Sun, 20 Feb 2022 16:48:49 GMT
+
+### Patches
+
+- Fixed supported Prettier configuration files, .prettierrc.* files are now also supported.
 
 ## 2.2.0
 Sat, 19 Feb 2022 09:36:14 GMT
