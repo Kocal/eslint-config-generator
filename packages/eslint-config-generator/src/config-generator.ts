@@ -83,7 +83,8 @@ function getBaseConfig(options: Options): ESLintConfig {
             '**/postcss.config.{js,ts}', // postcss config
             '**/tailwind.config.{js,ts}', // tailwind config
             '**/vite.config.{js,ts}', // vite config
-            '**/prettier.config.{js,ts}', // prettier config
+            '**/prettier.config.{js,cjs}', // prettier config
+            '**/.prettierrc.{js,cjs}', // prettier config
           ],
           optionalDependencies: false,
         },

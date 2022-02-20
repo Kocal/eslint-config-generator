@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator",
+      "comment": "Fixed supported Prettier configuration files, .prettierrc.* files are now also supported.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator",
+  "email": ""
+}
