@@ -206,6 +206,18 @@
    * For example, you might define a "--production" parameter for the "rush build" command.
    */
   "parameters": [
+    {
+      /**
+       * (Required) Determines the type of custom parameter.
+       * A "flag" is a custom command-line parameter whose presence acts as an on/off switch.
+       */
+      "parameterKind": "flag",
+      "longName": "--update-snapshots",
+      "shortName": "-u",
+      "description": "Use this flag to re-record snapshots.",
+      "associatedCommands": [ "test" ],
+    },
+
     // {
     //   /**
     //    * (Required) Determines the type of custom parameter.
