@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator-plugin-typescript
 
-This log was last generated on Sat, 19 Feb 2022 09:36:14 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jun 2022 21:09:56 GMT and should not be manually modified.
+
+## 3.0.0
+Fri, 17 Jun 2022 21:09:56 GMT
+
+### Breaking changes
+
+- Remove support for ESLint 7, move to ESLint 8
 
 ## 2.2.0
 Sat, 19 Feb 2022 09:36:14 GMT

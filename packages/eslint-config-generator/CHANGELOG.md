@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Sun, 20 Feb 2022 16:48:49 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jun 2022 21:09:56 GMT and should not be manually modified.
+
+## 3.0.0
+Fri, 17 Jun 2022 21:09:56 GMT
+
+### Breaking changes
+
+- Remove support for ESLint 7, move to ESLint 8
 
 ## 2.2.1
 Sun, 20 Feb 2022 16:48:49 GMT
