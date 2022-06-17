@@ -104,18 +104,7 @@ function configurePrettier(previousConfig: ESLintConfig, options: Options): ESLi
     config.extends = [config.extends];
   }
 
-  config.extends.push('prettier');
-  if (options.vue) {
-    config.extends.push('prettier/vue');
-  }
-  if (options.typescript) {
-    config.extends.push('prettier/@typescript-eslint');
-  }
-  config.plugins = (config.plugins || []).concat('prettier');
-  config.rules = {
-    ...(config.rules || {}),
-    'prettier/prettier': 'error',
-  };
+  config.extends.push('plugin:prettier/recommended');
 
   return config;
 }
