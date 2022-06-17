@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-common",
+      "comment": "Remove support for ESLint 7, move to ESLint 8",
+      "type": "major"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-common",
+  "email": "hugo@alliau.me"
+}
