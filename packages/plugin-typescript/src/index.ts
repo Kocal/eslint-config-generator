@@ -30,6 +30,7 @@ export default createPlugin(
         { selector: 'typeLike', format: ['PascalCase'] },
         { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
         { selector: 'function', format: ['camelCase', 'PascalCase'] },
+        { selector: 'objectLiteralProperty', format: null },
       ],
       '@typescript-eslint/no-var-requires': 'off',
     };
