@@ -101,6 +101,7 @@ describe('Configuration generator', function () {
           { selector: 'typeLike', format: ['PascalCase'] },
           { selector: 'property', format: ['camelCase', 'snake_case', 'PascalCase', 'UPPER_CASE'] },
           { selector: 'function', format: ['camelCase', 'PascalCase'] },
+          { selector: 'objectLiteralProperty', format: null },
         ],
       });
       expect(config.overrides).toMatchObject([
@@ -192,7 +193,7 @@ describe('Configuration generator', function () {
         'airbnb-base',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended'
+        'plugin:prettier/recommended',
       ]);
       expect(config.parser).toEqual('vue-eslint-parser');
       expect(config.parserOptions.parser).toEqual('@typescript-eslint/parser');
