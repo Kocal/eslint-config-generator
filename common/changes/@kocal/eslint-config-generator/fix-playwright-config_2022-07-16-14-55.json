@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator",
+      "comment": "Add support for Playwright config files",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator",
+  "email": "hugo@alliau.me"
+}

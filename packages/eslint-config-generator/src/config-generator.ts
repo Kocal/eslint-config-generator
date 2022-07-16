@@ -85,6 +85,7 @@ function getBaseConfig(options: Options): ESLintConfig {
             '**/vite.config.{js,ts}', // vite config
             '**/prettier.config.{js,cjs}', // prettier config
             '**/.prettierrc.{js,cjs}', // prettier config
+            '**/playwright.config.{js,ts}', // playwright config
           ],
           optionalDependencies: false,
         },
