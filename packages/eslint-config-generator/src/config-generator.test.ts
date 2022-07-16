@@ -64,6 +64,7 @@ describe('Configuration generator', function () {
               '**/vite.config.{js,ts}',
               '**/prettier.config.{js,cjs}',
               '**/.prettierrc.{js,cjs}',
+              '**/playwright.config.{js,ts}',
             ],
             optionalDependencies: false,
           },
