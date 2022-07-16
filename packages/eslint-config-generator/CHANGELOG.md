@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Fri, 17 Jun 2022 21:09:56 GMT and should not be manually modified.
+This log was last generated on Sat, 16 Jul 2022 14:57:53 GMT and should not be manually modified.
+
+## 3.1.0
+Sat, 16 Jul 2022 14:57:53 GMT
+
+### Minor changes
+
+- Add support for Playwright config files
 
 ## 3.0.0
 Fri, 17 Jun 2022 21:09:56 GMT
