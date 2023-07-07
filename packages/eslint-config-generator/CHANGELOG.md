@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator
 
-This log was last generated on Sat, 16 Jul 2022 14:57:53 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jul 2023 07:40:30 GMT and should not be manually modified.
+
+## 3.2.0
+Fri, 07 Jul 2023 07:40:30 GMT
+
+### Minor changes
+
+- Allow extraneous dependencies in Cypress config files
 
 ## 3.1.0
 Sat, 16 Jul 2022 14:57:53 GMT
