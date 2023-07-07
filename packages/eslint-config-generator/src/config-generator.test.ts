@@ -65,6 +65,7 @@ describe('Configuration generator', function () {
               '**/prettier.config.{js,cjs}',
               '**/.prettierrc.{js,cjs}',
               '**/playwright.config.{js,ts}',
+              '**/cypress.config.{js,ts}',
             ],
             optionalDependencies: false,
           },

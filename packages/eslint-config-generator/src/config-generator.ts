@@ -86,6 +86,7 @@ function getBaseConfig(options: Options): ESLintConfig {
             '**/prettier.config.{js,cjs}', // prettier config
             '**/.prettierrc.{js,cjs}', // prettier config
             '**/playwright.config.{js,ts}', // playwright config
+            '**/cypress.config.{js,ts}', // cypress config
           ],
           optionalDependencies: false,
         },
