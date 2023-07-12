@@ -435,6 +435,13 @@
       "shortName": "-u",
       "description": "Use this flag to re-record snapshots.",
       "associatedCommands": [ "test" ]
+    },
+
+    {
+      "parameterKind": "flag",
+      "longName": "--fix",
+      "description": "Use this flag to fix linting issues.",
+      "associatedCommands": [ "lint" ]
     }
   ]
 }
