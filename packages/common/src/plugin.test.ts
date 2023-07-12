@@ -3,17 +3,15 @@ import { createPlugin, ESLintConfig, normalizeUserOptions, Options } from '../di
 describe('Plugin', () => {
   describe('createPlugin()', function () {
     it('should create a plugin', function () {
-      const plugin = createPlugin(
-        ({ config, options }: { config: ESLintConfig; options: Options }): ESLintConfig => {
-          config.extends = ['foo-bar'];
+      const plugin = createPlugin(({ config, options }: { config: ESLintConfig; options: Options }): ESLintConfig => {
+        config.extends = ['foo-bar'];
 
-          if (options.vue) {
-            config.extends.push('vue-support');
-          }
-
-          return config;
+        if (options.vue) {
+          config.extends.push('vue-support');
         }
-      );
+
+        return config;
+      });
 
       const config = plugin({
         config: { parserOptions: {} },

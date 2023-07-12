@@ -516,6 +516,18 @@ export default {
               "nodeType": "VAttribute",
               "ruleId": "vue/no-template-target-blank",
               "severity": 2,
+              "suggestions": Array [
+                Object {
+                  "desc": "Add \`rel=\\"noopener noreferrer\\"\`.",
+                  "fix": Object {
+                    "range": Array [
+                      58,
+                      58,
+                    ],
+                    "text": " rel=\\"noopener noreferrer\\"",
+                  },
+                },
+              ],
             },
           ]
         `);
