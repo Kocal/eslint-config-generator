@@ -95,22 +95,6 @@ function getBaseConfig(options: Options): ESLintConfig {
   };
 }
 
-function configurePrettier(previousConfig: ESLintConfig, options: Options): ESLintConfig {
-  const config = { ...previousConfig };
-
-  if (typeof config.extends === 'undefined') {
-    config.extends = [];
-  }
-
-  if (typeof config.extends === 'string') {
-    config.extends = [config.extends];
-  }
-
-  config.extends.push('plugin:prettier/recommended');
-
-  return config;
-}
-
 function runPlugin(name: string, previousConfig: ESLintConfig, options: Options): ESLintConfig {
   const pkgName = `@kocal/eslint-config-generator-plugin-${name}`;
 
@@ -135,8 +119,6 @@ export function generateConfig(userOptions: UserOptions = {}): ESLintConfig {
   if (options.typescript) {
     config = runPlugin('typescript', config, options);
   }
-
-  config = configurePrettier(config, options);
 
   return config;
 }

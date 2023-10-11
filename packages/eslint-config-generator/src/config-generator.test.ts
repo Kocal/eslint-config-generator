@@ -17,7 +17,7 @@ describe('Configuration generator', function () {
           jsx: true,
         },
       },
-      extends: ['airbnb-base', 'plugin:prettier/recommended'],
+      extends: ['airbnb-base'],
       settings: {
         'import/resolver': {
           node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
@@ -86,7 +86,6 @@ describe('Configuration generator', function () {
         'airbnb-base',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
       ]);
       expect(config.parser).toEqual('@typescript-eslint/parser');
       expect(config.parserOptions.extraFileExtensions).toBeUndefined();
@@ -137,7 +136,7 @@ describe('Configuration generator', function () {
 
       const config = generateConfig(userOptions);
 
-      expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base', 'plugin:prettier/recommended']);
+      expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base']);
       expect(config.parser).toEqual('vue-eslint-parser');
       expect(config.parserOptions.parser).toEqual('@babel/eslint-parser');
       expect(config.rules).toMatchObject({
@@ -167,7 +166,7 @@ describe('Configuration generator', function () {
 
       const config: ESLintConfig = generateConfig(userOptions);
 
-      expect(config.extends).toEqual(['plugin:vue/vue3-recommended', 'airbnb-base', 'plugin:prettier/recommended']);
+      expect(config.extends).toEqual(['plugin:vue/vue3-recommended', 'airbnb-base']);
     });
 
     it('should generate a configuration with Vue support and preset "config"', function () {
@@ -179,7 +178,7 @@ describe('Configuration generator', function () {
 
       const config = generateConfig(userOptions);
 
-      expect(config.extends).toEqual(['plugin:vue/essential', 'airbnb-base', 'plugin:prettier/recommended']);
+      expect(config.extends).toEqual(['plugin:vue/essential', 'airbnb-base']);
     });
 
     it('should generate a configuration with TypeScript and Vue support, and automatically handle .vue files', function () {
@@ -195,7 +194,6 @@ describe('Configuration generator', function () {
         'airbnb-base',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
       ]);
       expect(config.parser).toEqual('vue-eslint-parser');
       expect(config.parserOptions.parser).toEqual('@typescript-eslint/parser');
