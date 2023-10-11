@@ -39,22 +39,22 @@ export function normalizeUserOptions(userOptions: UserOptions = {}): Options {
       typeof userOptions.vue === 'undefined'
         ? false
         : {
-            version:
+          version:
               userOptions.vue === true || typeof userOptions.vue.version === 'undefined' ? 2 : userOptions.vue.version,
-            config:
+          config:
               userOptions.vue === true || typeof userOptions.vue.config === 'undefined'
                 ? 'recommended'
                 : userOptions.vue.config,
-          },
+        },
     typescript:
       typeof userOptions.typescript === 'undefined'
         ? false
         : {
-            vueComponents:
+          vueComponents:
               userOptions.typescript === true || typeof userOptions.typescript.vueComponents === 'undefined'
                 ? vueEnabled
                 : userOptions.typescript.vueComponents,
-          },
+        },
   };
 
   return options;

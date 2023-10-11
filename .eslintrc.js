@@ -5,5 +5,6 @@ const config = generateConfig({
 });
 
 config.rules['no-param-reassign'][1].ignorePropertyModificationsFor.push('config'); // the ESLintConfig we "mutate"
+config.rules['max-len'] = 'off';
 
 module.exports = config;

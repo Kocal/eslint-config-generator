@@ -17,8 +17,8 @@ export default createPlugin(
     config.rules = {
       ...(config.rules || {}),
       'vue/component-name-in-template-casing': [
-        `error`,
-        `PascalCase`,
+        'error',
+        'PascalCase',
         {
           registeredComponentsOnly: false,
         },
@@ -33,5 +33,5 @@ export default createPlugin(
     };
 
     return config;
-  }
+  },
 );

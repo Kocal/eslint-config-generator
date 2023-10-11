@@ -14,7 +14,7 @@ function createESLint(options: ESLint.Options): ESLint {
 
 async function lintCode(
   code: string,
-  options?: { filePath?: string; warnIgnored?: boolean }
+  options?: { filePath?: string; warnIgnored?: boolean },
 ): Promise<ESLint.LintResult[]> {
   return eslint.lintText(code, options);
 }
@@ -36,23 +36,23 @@ async function lintVueCode(code: string): Promise<ESLint.LintResult[]> {
 }
 
 function cleanResults(results: ESLint.LintResult[]) {
-  return results.map((result) => {
-    return {
-      ...result,
-      messages: result.messages.map(({ line, column, ruleId, message }) => {
-        return { line, column, ruleId, message };
-      }),
-    };
-  });
+  return results.map((result) => ({
+    ...result,
+    messages: result.messages.map(({
+      line, column, ruleId, message,
+    }) => ({
+      line, column, ruleId, message,
+    })),
+  }));
 }
 
-describe('Functional', function () {
-  it('should lint by using the default configuration', async function () {
+describe('Functional', () => {
+  it('should lint by using the default configuration', async () => {
     eslint = createESLint({
       baseConfig: generateConfig(),
     });
 
-    const results = cleanResults(await eslint.lintText(`console.log("Hello world!")`, { filePath: 'MyComponent.js' }));
+    const results = cleanResults(await eslint.lintText('console.log("Hello world!")', { filePath: 'MyComponent.js' }));
 
     expect(results[0].messages).toMatchInlineSnapshot(`
 Array [
@@ -84,8 +84,8 @@ Array [
 `);
   });
 
-  describe('plugin: typescript', function () {
-    it('should lint TypeScript code', async function () {
+  describe('plugin: typescript', () => {
+    it('should lint TypeScript code', async () => {
       eslint = createESLint({
         baseConfig: generateConfig({
           typescript: true,
@@ -95,7 +95,7 @@ Array [
       const results = await lintTypeScriptCode(
         `const str: any = 'foo';
 console.log(str)
-`
+`,
       );
 
       expect(results[0].messages).toMatchInlineSnapshot(`
@@ -168,7 +168,7 @@ Array [
 `);
     });
 
-    it('should lint TypeScript code and valide namings case', async function () {
+    it('should lint TypeScript code and valide namings case', async () => {
       eslint = createESLint({
         baseConfig: generateConfig({
           typescript: true,
@@ -186,10 +186,10 @@ Array [
 }
 `);
 
-      expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
+      expect(results[0].messages).toMatchInlineSnapshot('Array []');
     });
 
-    it('should lint TSX code ', async function () {
+    it('should lint TSX code ', async () => {
       eslint = createESLint({
         baseConfig: generateConfig({
           typescript: true,
@@ -220,7 +220,7 @@ Array [
   });
 
   describe('plugin: vue', () => {
-    it('should lint Vue code', async function () {
+    it('should lint Vue code', async () => {
       eslint = createESLint({
         baseConfig: generateConfig({
           vue: true,
@@ -271,7 +271,7 @@ Array [
 `);
     });
 
-    it('should lint Vue code with TypeScript support on .vue files', async function () {
+    it('should lint Vue code with TypeScript support on .vue files', async () => {
       eslint = createESLint({
         baseConfig: generateConfig({
           vue: true,
@@ -344,9 +344,9 @@ Array [
     });
   });
 
-  describe('Specific rules', function () {
-    describe('vue/no-bare-strings-in-template', function () {
-      it('should fail', async function () {
+  describe('Specific rules', () => {
+    describe('vue/no-bare-strings-in-template', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -358,10 +358,10 @@ Array [
 </template>
 `);
 
-        expect(results[0].messages).toMatchInlineSnapshot(`Array []`);
+        expect(results[0].messages).toMatchInlineSnapshot('Array []');
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -379,8 +379,8 @@ Array [
       });
     });
 
-    describe('vue/no-duplicate-attr-inheritance', function () {
-      it('should fail', async function () {
+    describe('vue/no-duplicate-attr-inheritance', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -410,7 +410,7 @@ Array [
 `);
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -434,8 +434,8 @@ export default {
       });
     });
 
-    describe('vue/no-empty-component-block', function () {
-      it('should fail', async function () {
+    describe('vue/no-empty-component-block', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -462,7 +462,7 @@ Array [
 `);
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -480,8 +480,8 @@ Array [
       });
     });
 
-    describe('vue/no-template-target-blank', function () {
-      it('should fail', async function () {
+    describe('vue/no-template-target-blank', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -527,7 +527,7 @@ Array [
 `);
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -570,12 +570,12 @@ Array [
     "severity": 1,
   },
 ]
-`)
+`);
       });
     });
 
-    describe('vue/padding-line-between-blocks', function () {
-      it('should fail', async function () {
+    describe('vue/padding-line-between-blocks', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -615,7 +615,7 @@ Array [
 `);
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -635,8 +635,8 @@ export default {};
       });
     });
 
-    describe('vue/v-on-function-call', function () {
-      it('should fail', async function () {
+    describe('vue/v-on-function-call', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -711,7 +711,7 @@ Array [
 `);
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -809,8 +809,8 @@ Array [
       });
     });
 
-    describe('vue/no-boolean-default', function () {
-      it('should fail', async function () {
+    describe('vue/no-boolean-default', () => {
+      it('should fail', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
@@ -845,7 +845,7 @@ Array [
 `);
       });
 
-      it('should pass', async function () {
+      it('should pass', async () => {
         eslint = createESLint({
           baseConfig: generateConfig({
             vue: true,
