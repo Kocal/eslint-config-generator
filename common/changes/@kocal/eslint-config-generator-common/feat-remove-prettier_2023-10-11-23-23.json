@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@kocal/eslint-config-generator-common",
+      "comment": "Remove Prettier support.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@kocal/eslint-config-generator-common",
+  "email": "hugo@alliau.me"
+}
