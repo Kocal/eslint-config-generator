@@ -4,7 +4,5 @@ import { Options } from './options';
 export type PluginCallback = ({ config, options }: { config: ESLintConfig; options: Options }) => ESLintConfig;
 
 export function createPlugin(callback: PluginCallback): PluginCallback {
-  return ({ config, options }) => {
-    return callback({ config, options });
-  };
+  return ({ config, options }) => callback({ config, options });
 }

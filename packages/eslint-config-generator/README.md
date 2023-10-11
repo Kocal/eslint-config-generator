@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-$ yarn add --dev @kocal/eslint-config-generator eslint@^8.0.0 @babel/eslint-parser@^7.16.0 prettier@^2.0.0
+$ yarn add --dev @kocal/eslint-config-generator eslint@^8.0.0 @babel/eslint-parser@^7.16.0
 ```
 
 ## Usage

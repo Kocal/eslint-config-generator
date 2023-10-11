@@ -1,8 +1,10 @@
-import { createPlugin, ESLintConfig, normalizeUserOptions, Options } from '../dist';
+import {
+  createPlugin, ESLintConfig, normalizeUserOptions, Options,
+} from '../dist';
 
 describe('Plugin', () => {
-  describe('createPlugin()', function () {
-    it('should create a plugin', function () {
+  describe('createPlugin()', () => {
+    it('should create a plugin', () => {
       const plugin = createPlugin(
         ({ config, options }: { config: ESLintConfig; options: Options }): ESLintConfig => {
           config.extends = ['foo-bar'];
@@ -12,7 +14,7 @@ describe('Plugin', () => {
           }
 
           return config;
-        }
+        },
       );
 
       const config = plugin({

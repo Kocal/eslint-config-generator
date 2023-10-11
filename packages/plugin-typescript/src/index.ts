@@ -20,7 +20,9 @@ export default createPlugin(
       ...config.rules,
       '@typescript-eslint/naming-convention': [
         'error',
-        { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+        {
+          selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow',
+        },
         {
           selector: 'variable',
           format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
@@ -56,9 +58,9 @@ export default createPlugin(
           'no-loop-func': 'off',
           'no-shadow': 'off',
         },
-      }
+      },
     );
 
     return config;
-  }
+  },
 );

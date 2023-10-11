@@ -1,8 +1,8 @@
 import { ESLintConfig, UserOptions } from '@kocal/eslint-config-generator-common';
 import { generateConfig } from '../dist';
 
-describe('Configuration generator', function () {
-  it('should generate the default configuration', function () {
+describe('Configuration generator', () => {
+  it('should generate the default configuration', () => {
     const config = generateConfig();
 
     expect(config).toMatchObject({
@@ -17,7 +17,7 @@ describe('Configuration generator', function () {
           jsx: true,
         },
       },
-      extends: ['airbnb-base', 'plugin:prettier/recommended'],
+      extends: ['airbnb-base'],
       settings: {
         'import/resolver': {
           node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
@@ -34,7 +34,9 @@ describe('Configuration generator', function () {
         'import/extensions': [
           'error',
           'always',
-          { js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never', 'd.ts': 'never' },
+          {
+            js: 'never', jsx: 'never', mjs: 'never', ts: 'never', tsx: 'never', 'd.ts': 'never',
+          },
         ],
         'import/no-extraneous-dependencies': [
           'error',
@@ -74,8 +76,8 @@ describe('Configuration generator', function () {
     });
   });
 
-  describe('plugin: typescript', function () {
-    it('should generate a configuration with TypeScript support', function () {
+  describe('plugin: typescript', () => {
+    it('should generate a configuration with TypeScript support', () => {
       const userOptions: UserOptions = {
         typescript: true,
       };
@@ -86,14 +88,15 @@ describe('Configuration generator', function () {
         'airbnb-base',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
       ]);
       expect(config.parser).toEqual('@typescript-eslint/parser');
       expect(config.parserOptions.extraFileExtensions).toBeUndefined();
       expect(config.rules).toMatchObject({
         '@typescript-eslint/naming-convention': [
           'error',
-          { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+          {
+            selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow',
+          },
           {
             selector: 'variable',
             format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
@@ -129,21 +132,21 @@ describe('Configuration generator', function () {
     });
   });
 
-  describe('plugin: vue', function () {
-    it('should generate a configuration with Vue support', function () {
+  describe('plugin: vue', () => {
+    it('should generate a configuration with Vue support', () => {
       const userOptions: UserOptions = {
         vue: true,
       };
 
       const config = generateConfig(userOptions);
 
-      expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base', 'plugin:prettier/recommended']);
+      expect(config.extends).toEqual(['plugin:vue/recommended', 'airbnb-base']);
       expect(config.parser).toEqual('vue-eslint-parser');
       expect(config.parserOptions.parser).toEqual('@babel/eslint-parser');
       expect(config.rules).toMatchObject({
         'vue/component-name-in-template-casing': [
-          `error`,
-          `PascalCase`,
+          'error',
+          'PascalCase',
           {
             registeredComponentsOnly: false,
           },
@@ -158,7 +161,7 @@ describe('Configuration generator', function () {
       });
     });
 
-    it('should generate a configuration with Vue 3 support', function () {
+    it('should generate a configuration with Vue 3 support', () => {
       const userOptions: UserOptions = {
         vue: {
           version: 3,
@@ -167,10 +170,10 @@ describe('Configuration generator', function () {
 
       const config: ESLintConfig = generateConfig(userOptions);
 
-      expect(config.extends).toEqual(['plugin:vue/vue3-recommended', 'airbnb-base', 'plugin:prettier/recommended']);
+      expect(config.extends).toEqual(['plugin:vue/vue3-recommended', 'airbnb-base']);
     });
 
-    it('should generate a configuration with Vue support and preset "config"', function () {
+    it('should generate a configuration with Vue support and preset "config"', () => {
       const userOptions: UserOptions = {
         vue: {
           config: 'essential',
@@ -179,10 +182,10 @@ describe('Configuration generator', function () {
 
       const config = generateConfig(userOptions);
 
-      expect(config.extends).toEqual(['plugin:vue/essential', 'airbnb-base', 'plugin:prettier/recommended']);
+      expect(config.extends).toEqual(['plugin:vue/essential', 'airbnb-base']);
     });
 
-    it('should generate a configuration with TypeScript and Vue support, and automatically handle .vue files', function () {
+    it('should generate a configuration with TypeScript and Vue support, and automatically handle .vue files', () => {
       const userOptions: UserOptions = {
         typescript: true,
         vue: true,
@@ -195,7 +198,6 @@ describe('Configuration generator', function () {
         'airbnb-base',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
       ]);
       expect(config.parser).toEqual('vue-eslint-parser');
       expect(config.parserOptions.parser).toEqual('@typescript-eslint/parser');
@@ -223,7 +225,7 @@ describe('Configuration generator', function () {
       ]);
     });
 
-    it('should generate a configuration with TypeScript and Vue support, but .vue files are not handled', function () {
+    it('should generate a configuration with TypeScript and Vue support, but .vue files are not handled', () => {
       const userOptions: UserOptions = {
         typescript: {
           vueComponents: false,
