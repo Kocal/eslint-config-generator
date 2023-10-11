@@ -3,7 +3,7 @@
 ![GitHub Actions: CI](https://github.com/kocal/eslint-config-generator/workflows/CI/badge.svg)
 ![GitHub Actions: Release](https://github.com/kocal/eslint-config-generator/workflows/Release/badge.svg)
 
-An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, TypeScript and Prettier support.
+An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, and TypeScript support.
 
 | Package                                                                          | Version                                                                                                                                                          |
 | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,7 +15,6 @@ An opinionated ESLint config generator for my projects. Comes with AirBnB, Vue, 
 ## Features
 
 - Use [eslint-config-airbnb-base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
-- Use Prettier with [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) and [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
 - Support Vue, with [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) and some opinionated rules
 - Support TypeScript, with [@typescript-eslint/plugin-eslint](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/) and some opinionated rules
 
