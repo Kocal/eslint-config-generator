@@ -2,6 +2,23 @@
   "name": "@kocal/eslint-config-generator-plugin-vue",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@kocal/eslint-config-generator-plugin-vue_v4.0.0",
+      "date": "Wed, 11 Oct 2023 23:34:41 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Remove Prettier support."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-common\" to `4.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.0",
       "tag": "@kocal/eslint-config-generator-plugin-vue_v3.0.0",
       "date": "Fri, 17 Jun 2022 21:09:56 GMT",

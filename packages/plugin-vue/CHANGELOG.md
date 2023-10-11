@@ -1,6 +1,13 @@
 # Change Log - @kocal/eslint-config-generator-plugin-vue
 
-This log was last generated on Fri, 17 Jun 2022 21:09:56 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 23:34:41 GMT and should not be manually modified.
+
+## 4.0.0
+Wed, 11 Oct 2023 23:34:41 GMT
+
+### Breaking changes
+
+- Remove Prettier support.
 
 ## 3.0.0
 Fri, 17 Jun 2022 21:09:56 GMT

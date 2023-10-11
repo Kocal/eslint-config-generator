@@ -2,6 +2,34 @@
   "name": "@kocal/eslint-config-generator",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@kocal/eslint-config-generator_v4.0.0",
+      "date": "Wed, 11 Oct 2023 23:34:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow extraneous dependencies in Cypress config files"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Remove Prettier support."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-common\" to `4.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-typescript\" to `4.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@kocal/eslint-config-generator-plugin-vue\" to `4.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.1.0",
       "tag": "@kocal/eslint-config-generator_v3.1.0",
       "date": "Sat, 16 Jul 2022 14:57:53 GMT",
