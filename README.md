@@ -1,3 +1,24 @@
+# 15/10/2023: This package is now archived
+
+This package is now archived, I don't plan to maintain it anymore because I believe the community does not this kind of tool anymore since [ESLint supports FlatConfig](https://eslint.org/docs/latest/use/configure/configuration-files-new).
+
+FlatConfig simplified the configuration sharing, it means that you can create a `eslint.config.js` file at the root of your project and import configs from npm packages like this:
+
+```js
+import someConfig from "some-other-config-you-use";
+import eslintConfigPrettier from "eslint-config-prettier";
+
+export default [
+  someConfig,
+  {
+    rules: {
+      indent: "error",
+    },
+  },
+  eslintConfigPrettier, // eslint-config-prettier last
+];
+```
+
 # ESLint config generator
 
 ![GitHub Actions: CI](https://github.com/kocal/eslint-config-generator/workflows/CI/badge.svg)
